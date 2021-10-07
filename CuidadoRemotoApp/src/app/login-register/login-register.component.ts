@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+interface UserRole {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-login-register',
   templateUrl: './login-register.component.html',
@@ -7,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginRegisterComponent implements OnInit {
 
-  UserRole: any = ['Responsavel','Idoso(a)','Prof Saude'];
+  UserRole: UserRole[] = [{value: 'resp', viewValue: 'Responsável'},{value: 'idoso', viewValue: 'Idoso(a)'},{value: 'saude', viewValue: 'Prof. Saúde'}];
 
   constructor() { }
 
