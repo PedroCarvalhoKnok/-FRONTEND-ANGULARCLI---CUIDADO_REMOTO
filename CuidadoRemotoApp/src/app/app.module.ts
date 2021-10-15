@@ -16,13 +16,18 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { LoginRegisterComponent } from './login-register/login-register.component';
 import {MatSelectModule} from '@angular/material/select';
+import { ScheduleRegisterComponent } from './schedule-register/schedule-register.component';
+import { ScheduleListComponent } from './schedule-list/schedule-list.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    LoginRegisterComponent
+    LoginRegisterComponent,
+    ScheduleRegisterComponent,
+    ScheduleListComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +44,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
