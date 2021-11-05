@@ -9,10 +9,21 @@
         <mat-card-content>
 
             <label>Crie sua agenda e a personalize de acordo com sua semana</label>
+
+            <label>Escolha os dias para criar os agendamentos</label>
+            <mat-select id="dayOfWeek" for="dayOfWeek" #dayOfWeek>
+                <mat-option [value]="day.value" *ngFor="let day of DaysOfWeek">
+                  {{day.viewValue}}
+                </mat-option>
+            </mat-select>
+
+            <button (click)="setVisibilityDay(dayOfWeek.value)" mat-fab color="primary" aria-label="Salvar atividade diária">
+                Adicionar dia
+            </button>
  
         </mat-card-content>
 
-        <mat-card-content>
+        <mat-card-content *ngIf="showMondayCard">
 
             <label>Segunda Feira</label>
 
@@ -27,16 +38,22 @@
             <label>Selecione um horário</label>
             <input mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
             min-date="minDate" type="text" id="time2" format="HH:mm" short-time="false" ng-model="timeutc"
-            class=" md-input">
+            class="md-input">
 
-            <button mat-fab color="primary" aria-label="Salvar atividade diária">
+            <button (click)="addActivity('1')" mat-fab color="primary" aria-label="Salvar atividade diária">
                 <mat-icon>control_point</mat-icon>
-              </button>
+            </button>
+
+            <button mat-fab color="warn" aria-label="Deletar dia">
+                <mat-icon>delete</mat-icon>
+            </button>
+
+            <div [innerHTML]="sundayActivities"></div>
             
 
         </mat-card-content>
 
-        <mat-card-content>
+        <mat-card-content *ngIf="showTuesdayCard">
 
             <label>Terça Feira</label>
 
@@ -53,14 +70,19 @@
             min-date="minDate" type="text" id="time2" format="HH:mm" short-time="false" ng-model="timeutc"
             class=" md-input">
 
-            <button mat-fab color="primary" aria-label="Salvar atividade diária">
+            <button (click)="addActivity('2')" mat-fab color="primary" aria-label="Salvar atividade diária">
                 <mat-icon>control_point</mat-icon>
-              </button>
+            </button>
+
+            <button mat-fab color="warn" aria-label="Deletar dia">
+                <mat-icon>delete</mat-icon>
+            </button>
             
+            <div [innerHTML]="tuesdayActivities"></div>
 
         </mat-card-content>
 
-        <mat-card-content>
+        <mat-card-content *ngIf="showWednesdayCard">
 
             <label>Quarta Feira</label>
 
@@ -77,14 +99,19 @@
             min-date="minDate" type="text" id="time2" format="HH:mm" short-time="false" ng-model="timeutc"
             class=" md-input">
 
-            <button mat-fab color="primary" aria-label="Salvar atividade diária">
+            <button (click)="addActivity('3')" mat-fab color="primary" aria-label="Salvar atividade diária">
                 <mat-icon>control_point</mat-icon>
-              </button>
-            
+            </button>
+
+            <button mat-fab color="warn" aria-label="Deletar dia">
+                <mat-icon>delete</mat-icon>
+            </button>
+
+            <div [innerHTML]="wednesdayActivities"></div>
 
         </mat-card-content>
 
-        <mat-card-content>
+        <mat-card-content *ngIf="showThursdayCard">
 
             <label>Quinta Feira</label>
 
@@ -101,14 +128,19 @@
             min-date="minDate" type="text" id="time2" format="HH:mm" short-time="false" ng-model="timeutc"
             class=" md-input">
 
-            <button mat-fab color="primary" aria-label="Salvar atividade diária">
+            <button (click)="addActivity('4')" mat-fab color="primary" aria-label="Salvar atividade diária">
                 <mat-icon>control_point</mat-icon>
-              </button>
+            </button>
+
+            <button mat-fab color="warn" aria-label="Deletar dia">
+                <mat-icon>delete</mat-icon>
+            </button>
             
+            <div [innerHTML]="thursdayActivities"></div>
 
         </mat-card-content>
 
-        <mat-card-content>
+        <mat-card-content *ngIf="showFridayCard">
 
             <label>Sexta Feira</label>
 
@@ -125,14 +157,19 @@
             min-date="minDate" type="text" id="time2" format="HH:mm" short-time="false" ng-model="timeutc"
             class=" md-input">
 
-            <button mat-fab color="primary" aria-label="Salvar atividade diária">
+            <button (click)="addActivity('5')" mat-fab color="primary" aria-label="Salvar atividade diária">
                 <mat-icon>control_point</mat-icon>
-              </button>
+            </button>
+
+            <button mat-fab color="warn" aria-label="Deletar dia">
+                <mat-icon>delete</mat-icon>
+            </button>
             
+            <div [innerHTML]="fridayActivities"></div>
 
         </mat-card-content>
 
-        <mat-card-content>
+        <mat-card-content *ngIf="showSaturdayCard">
 
             <label>Sábado</label>
 
@@ -149,14 +186,19 @@
             min-date="minDate" type="text" id="time2" format="HH:mm" short-time="false" ng-model="timeutc"
             class=" md-input">
 
-            <button mat-fab color="primary" aria-label="Salvar atividade diária">
+            <button (click)="addActivity('6')" mat-fab color="primary" aria-label="Salvar atividade diária">
                 <mat-icon>control_point</mat-icon>
-              </button>
+            </button>
+
+            <button mat-fab color="warn" aria-label="Deletar dia">
+                <mat-icon>delete</mat-icon>
+            </button>
             
+            <div [innerHTML]="saturdayActivities"></div>
 
         </mat-card-content>
 
-        <mat-card-content>
+        <mat-card-content *ngIf="showSundayCard">
 
             <label>Domingo</label>
 
@@ -173,10 +215,15 @@
             min-date="minDate" type="text" id="time2" format="HH:mm" short-time="false" ng-model="timeutc"
             class=" md-input">
 
-            <button mat-fab color="primary" aria-label="Salvar atividade diária">
+            <button (click)="addActivity('0')" mat-fab color="primary" aria-label="Salvar atividade diária">
                 <mat-icon>control_point</mat-icon>
-              </button>
+            </button>
+
+            <button mat-fab color="warn" aria-label="Deletar dia">
+                <mat-icon>delete</mat-icon>
+            </button>
             
+            <div [innerHTML]="sundayActivities"></div>
 
         </mat-card-content>
   

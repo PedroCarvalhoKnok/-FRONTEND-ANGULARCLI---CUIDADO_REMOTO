@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { LoginRegisterComponent } from './login-register/login-register.component';
 import { ScheduleRegisterComponent } from './schedule-register/schedule-register.component';
+import { ScheduleListComponent } from './schedule-list/schedule-list.component';
 
 const routes: Routes = [
   { path: '', 
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'schedule',
     component: ScheduleRegisterComponent
+  },
+  {
+    path: 'schedule/list',
+    component: ScheduleListComponent
   }
 ];
 

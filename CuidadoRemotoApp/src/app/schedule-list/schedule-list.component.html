@@ -1,1 +1,89 @@
-<p>schedule-list works!</p>
+<ng-template #contact let-modal>
+    <div class="modal-header">
+    <h2 class="modal-title">Editar o dia</h2>
+     <button type="button" class="close" (click)="modal.dismiss()"><span>&times;</span></button>
+    </div>
+      <div class="modal">
+        <div class="modal-body">
+    
+        <form>
+          <div class="form-group">
+            <label for="dia-semana-input">Dia da Semana</label>
+            <mat-select id="dia-semana">
+                <mat-option [value]="day.value" *ngFor="let day of DaysOfWeek">
+                  {{day.viewValue}}
+                </mat-option>
+            </mat-select>
+          </div>
+          <div class="form-group">
+            <label for="cat-input">Categoria</label>
+            <input type="text" id="cat-input" class="form-control" name="cat-input" formControlName="category">
+          </div>
+          <div class="form-group">
+            <label for="details-input">Detalhes</label>
+            <input type="text" id="details-input" class="form-control" name="details-input" formControlName="details">
+          </div>
+          <div class="form-group">
+            <label for="schedule-input">Horário</label>
+            <input mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
+            min-date="minDate" type="text" id="time2" format="HH:mm" short-time="false" ng-model="timeutc"
+            class="md-input">
+          </div>
+    
+        </form>
+        </div>
+      </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-primary" (click)="modal.dismiss()">Cancelar</button>
+          <button class="btn btn-primary" (click)="modal.close()">Editar</button>
+        </div>
+    </ng-template>
+
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Seus Agendamentos semanal</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+         <table mat-table class="mat-elevation-z8">
+            
+            <ng-container matColumnDef="dia_semana">
+              <th mat-header-cell *matHeaderCellDef> Dia da semana </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="categoria">
+              <th mat-header-cell *matHeaderCellDef> Categoria </th>
+              <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="detalhes">
+              <th mat-header-cell *matHeaderCellDef> Detalhes </th>
+              <td mat-cell *matCellDef="let element"> {{element.details}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="horario">
+                <th mat-header-cell *matHeaderCellDef> Horário </th>
+                <td mat-cell *matCellDef="let element"> {{element.schedule}} </td>
+              </ng-container>
+          
+            <ng-container matColumnDef="buttons">
+              <th mat-header-cell *matHeaderCellDef> Ações </th>
+              <td mat-cell *matCellDef="let element"> <button mat-icon-button aria-label="Editar dia" color="primary">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button aria-label="Excluir dia" color="danger">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                 </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+      </mat-card-content>
+      
+    </mat-card>
+  </div>
+
