@@ -11,13 +11,13 @@
             <label>Crie sua agenda e a personalize de acordo com sua semana</label>
 
             <label>Escolha os dias para criar os agendamentos</label>
-            <mat-select id="dayOfWeek" for="dayOfWeek" #dayOfWeek>
+            <mat-select [(ngModel)]="dayOfWeek">
                 <mat-option [value]="day.value" *ngFor="let day of DaysOfWeek">
                   {{day.viewValue}}
                 </mat-option>
             </mat-select>
 
-            <button (click)="setVisibilityDay(dayOfWeek.value)" mat-fab color="primary" aria-label="Salvar atividade diária">
+            <button (click)="setVisibilityDay()" mat-fab color="primary" aria-label="Salvar atividade diária">
                 Adicionar dia
             </button>
  

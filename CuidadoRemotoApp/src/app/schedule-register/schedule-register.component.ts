@@ -13,6 +13,8 @@ interface DaysOfWeek {
 })
 
 export class ScheduleRegisterComponent{
+
+  dayOfWeek: string = "";
   
   showMondayCard: boolean = false;
   showTuesdayCard: boolean = false;
@@ -76,9 +78,9 @@ export class ScheduleRegisterComponent{
     }
   }
 
-  setVisibilityDay(value: string){
+  setVisibilityDay(){
 
-    switch(value){
+    switch(this.dayOfWeek){
       case '0':
         this.showSundayCard = true;
         break;

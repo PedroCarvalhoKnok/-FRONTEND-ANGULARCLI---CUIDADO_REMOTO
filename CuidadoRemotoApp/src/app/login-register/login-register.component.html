@@ -1,35 +1,37 @@
+
+
 <div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="box">
       <mat-card-header>
         <mat-card-title>Cadastrar</mat-card-title>
       </mat-card-header>
   
-      <form class="example-form">
+      <form class="example-form" (ngSubmit)="registerUser()" [formGroup]="formGroup">
   
         <mat-card-content>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Nome">
+            <input matInput id="name-input" name="name-input" placeholder="Nome" [(ngModel)]="user.name" [ngClass] ="{'is-invalid': this.formGroup.controls.name.errors && this.formSubbimited}">
           </mat-form-field>
   
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Email">
+            <input matInput id="email-input" name="email-input" placeholder="Email" [(ngModel)]="user.email" [ngClass] ="{'is-invalid': this.formGroup.controls.name.errors && this.formSubbimited}">
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Telefone">
+            <input matInput id="phone-input" name="phone-input" placeholder="Telefone" [(ngModel)]="user.phone" mask="(00)0 0000-0000 || 0 00000000" [ngClass] ="{'is-invalid': this.formGroup.controls.name.errors && this.formSubbimited}">
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Data de Nascimento">
+            <input matInput id="birth-input" name="birth-input" placeholder="Data de Nascimento" [(ngModel)]="user.birthDate" [ngClass] ="{'is-invalid': this.formGroup.controls.name.errors && this.formSubbimited}">
           </mat-form-field>
   
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Senha">
+            <input matInput id="password-input" name="password-input" placeholder="Senha" [(ngModel)]="user.password" [ngClass] ="{'is-invalid': this.formGroup.controls.name.errors && this.formSubbimited}">
           </mat-form-field>
   
           <mat-form-field class="example-full-width">
             <mat-label>Perfil do usuário</mat-label>
-            <mat-select>
+            <mat-select [(ngModel)]="user.role" id="perfil-input" name="perfil-input"  [ngClass] ="{'is-invalid': this.formGroup.controls.name.errors && this.formSubbimited}">
               <mat-option [value]="role.value" *ngFor="let role of UserRole">
                 {{role.viewValue}}
               </mat-option>
@@ -38,7 +40,7 @@
   
         </mat-card-content>
   
-        <button mat-stroked-button class="btn-block">Registrar</button>
+        <button (click)="registerUser()" mat-stroked-button class="btn-block">Registrar</button>
   
       </form>
     </mat-card>

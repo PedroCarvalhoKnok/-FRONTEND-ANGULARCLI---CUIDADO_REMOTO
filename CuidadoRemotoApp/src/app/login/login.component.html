@@ -10,14 +10,14 @@
       <form class="example-form">
         <mat-card-content>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Nome">
+            <input matInput placeholder="Email" [(ngModel)]="email">
           </mat-form-field>
   
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Email">
+            <input matInput placeholder="Senha" [(ngModel)]="password">
           </mat-form-field>
         </mat-card-content>
-        <button mat-stroked-button class="btn-block">Entrar</button>
+        <button onclick="authenticateUser()" mat-stroked-button>Entrar</button>
       </form>
     </mat-card>
   

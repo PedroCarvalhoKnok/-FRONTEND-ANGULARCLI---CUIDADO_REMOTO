@@ -20,6 +20,7 @@ import { ScheduleRegisterComponent } from './schedule-register/schedule-register
 import { ScheduleListComponent } from './schedule-list/schedule-list.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {PortalModule} from '@angular/cdk/portal';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {PortalModule} from '@angular/cdk/portal';
     MatButtonModule,
     MatSelectModule,
     MatDatepickerModule,
-    PortalModule
+    PortalModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
