@@ -21,6 +21,9 @@ import { ScheduleListComponent } from './schedule-list/schedule-list.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {PortalModule} from '@angular/cdk/portal';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDividerModule} from '@angular/material/divider';
+import {LayoutModule} from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSelectModule,
     MatDatepickerModule,
     PortalModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSidenavModule,
+    MatDividerModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

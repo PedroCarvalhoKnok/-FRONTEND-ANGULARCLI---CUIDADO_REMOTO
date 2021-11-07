@@ -4,7 +4,7 @@
         <mat-card-title>Monte seu horário</mat-card-title>
       </mat-card-header>
   
-      <form class="example-form">
+      <form class="example-form" (ngSubmit)="registerSchedule()" [formGroup]="formGroup">
   
         <mat-card-content>
 
@@ -28,17 +28,17 @@
             <label>Segunda Feira</label>
 
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Categoria">
+                <input matInput placeholder="Categoria" id="input-cat-01" [(ngModel)]="schedule.category" [ngClass] ="{'is-invalid': this.formGroup.controls.category.errors && this.formSubbimited}">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Detalhes">
+                <input matInput placeholder="Detalhes" id="input-det-01" [(ngModel)]="schedule.details" [ngClass] ="{'is-invalid': this.formGroup.controls.detailserrors && this.formSubbimited}">
             </mat-form-field>
 
             <label>Selecione um horário</label>
             <input mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
-            min-date="minDate" type="text" id="time2" format="HH:mm" short-time="false" ng-model="timeutc"
-            class="md-input">
+            min-date="minDate" type="text" id="input-time-00" format="HH:mm" short-time="false" ng-model="timeutc"
+            class="md-input" [(ngModel)]="schedule.time" [ngClass] ="{'is-invalid': this.formGroup.controls.time.errors && this.formSubbimited}">
 
             <button (click)="addActivity('1')" mat-fab color="primary" aria-label="Salvar atividade diária">
                 <mat-icon>control_point</mat-icon>
@@ -58,17 +58,17 @@
             <label>Terça Feira</label>
 
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Categoria">
+                <input matInput placeholder="Categoria" id="input-cat-02" [(ngModel)]="schedule.category" [ngClass] ="{'is-invalid': this.formGroup.controls.category.errors && this.formSubbimited}">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Detalhes">
+                <input matInput placeholder="Detalhes" id="input-det-02" [(ngModel)]="schedule.details" [ngClass] ="{'is-invalid': this.formGroup.controls.details.errors && this.formSubbimited}">
             </mat-form-field>
 
             <label>Selecione um horário</label>
             <input mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
-            min-date="minDate" type="text" id="time2" format="HH:mm" short-time="false" ng-model="timeutc"
-            class=" md-input">
+            min-date="minDate" type="text" id="input-time-02" format="HH:mm" short-time="false" ng-model="timeutc"
+            class=" md-input" [(ngModel)]="schedule.time" [ngClass] ="{'is-invalid': this.formGroup.controls.time.errors && this.formSubbimited}">
 
             <button (click)="addActivity('2')" mat-fab color="primary" aria-label="Salvar atividade diária">
                 <mat-icon>control_point</mat-icon>
@@ -87,17 +87,17 @@
             <label>Quarta Feira</label>
 
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Categoria">
+                <input matInput placeholder="Categoria" id="input-cat-03" [(ngModel)]="schedule.category" [ngClass] ="{'is-invalid': this.formGroup.controls.category.errors && this.formSubbimited}">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Detalhes">
+                <input matInput placeholder="Detalhes" id="input-det-03" [(ngModel)]="schedule.details" [ngClass] ="{'is-invalid': this.formGroup.controls.details.errors && this.formSubbimited}">
             </mat-form-field>
 
             <label>Selecione um horário</label>
             <input mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
-            min-date="minDate" type="text" id="time2" format="HH:mm" short-time="false" ng-model="timeutc"
-            class=" md-input">
+            min-date="minDate" type="text" id="input-time-03" format="HH:mm" short-time="false" ng-model="timeutc"
+            class=" md-input" [(ngModel)]="schedule.time" [ngClass] ="{'is-invalid': this.formGroup.controls.time.errors && this.formSubbimited}">
 
             <button (click)="addActivity('3')" mat-fab color="primary" aria-label="Salvar atividade diária">
                 <mat-icon>control_point</mat-icon>
@@ -116,17 +116,17 @@
             <label>Quinta Feira</label>
 
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Categoria">
+                <input matInput placeholder="Categoria" id="input-cat-04" [(ngModel)]="schedule.category" [ngClass] ="{'is-invalid': this.formGroup.controls.category.errors && this.formSubbimited}">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Detalhes">
+                <input matInput placeholder="Detalhes" id="input-det-04" [(ngModel)]="schedule.details" [ngClass] ="{'is-invalid': this.formGroup.controls.details.errors && this.formSubbimited}">
             </mat-form-field>
 
             <label>Selecione um horário</label>
             <input mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
-            min-date="minDate" type="text" id="time2" format="HH:mm" short-time="false" ng-model="timeutc"
-            class=" md-input">
+            min-date="minDate" type="text" id="input-time-04" format="HH:mm" short-time="false" ng-model="timeutc"
+            class=" md-input" [(ngModel)]="schedule.time" [ngClass] ="{'is-invalid': this.formGroup.controls.time.errors && this.formSubbimited}">
 
             <button (click)="addActivity('4')" mat-fab color="primary" aria-label="Salvar atividade diária">
                 <mat-icon>control_point</mat-icon>
@@ -145,17 +145,17 @@
             <label>Sexta Feira</label>
 
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Categoria">
+                <input matInput placeholder="Categoria" id="input-cat-05" [(ngModel)]="schedule.category" [ngClass] ="{'is-invalid': this.formGroup.controls.category.errors && this.formSubbimited}">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Detalhes">
+                <input matInput placeholder="Detalhes" id="input-det-05" [(ngModel)]="schedule.details" [ngClass] ="{'is-invalid': this.formGroup.controls.details.errors && this.formSubbimited}">
             </mat-form-field>
 
             <label>Selecione um horário</label>
             <input mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
-            min-date="minDate" type="text" id="time2" format="HH:mm" short-time="false" ng-model="timeutc"
-            class=" md-input">
+            min-date="minDate" type="text" id="input-time-05" format="HH:mm" short-time="false" ng-model="timeutc"
+            class=" md-input" [(ngModel)]="schedule.time" [ngClass] ="{'is-invalid': this.formGroup.controls.time.errors && this.formSubbimited}">
 
             <button (click)="addActivity('5')" mat-fab color="primary" aria-label="Salvar atividade diária">
                 <mat-icon>control_point</mat-icon>
@@ -174,17 +174,17 @@
             <label>Sábado</label>
 
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Categoria">
+                <input matInput placeholder="Categoria" id="input-cat-06" [(ngModel)]="schedule.category" [ngClass] ="{'is-invalid': this.formGroup.controls.category.errors && this.formSubbimited}">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Detalhes">
+                <input matInput placeholder="Detalhes" id="input-det-06" [(ngModel)]="schedule.details" [ngClass] ="{'is-invalid': this.formGroup.controls.detailserrors && this.formSubbimited}">
             </mat-form-field>
 
             <label>Selecione um horário</label>
             <input mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
-            min-date="minDate" type="text" id="time2" format="HH:mm" short-time="false" ng-model="timeutc"
-            class=" md-input">
+            min-date="minDate" type="text" id="input-time-06" format="HH:mm" short-time="false" ng-model="timeutc"
+            class=" md-input" [(ngModel)]="schedule.time" [ngClass] ="{'is-invalid': this.formGroup.controls.time.errors && this.formSubbimited}">
 
             <button (click)="addActivity('6')" mat-fab color="primary" aria-label="Salvar atividade diária">
                 <mat-icon>control_point</mat-icon>
@@ -202,18 +202,20 @@
 
             <label>Domingo</label>
 
+            <label>Categoria da Atividade</label>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Categoria">
+                <input matInput placeholder="Categoria" id="input-cat-00" [(ngModel)]="schedule.category" [ngClass] ="{'is-invalid': this.formGroup.controls.category.errors && this.formSubbimited}">
             </mat-form-field>
 
+            <label>Detalhes da Atividade</label>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Detalhes">
+                <input matInput placeholder="Detalhes" id="input-det-00" [(ngModel)]="schedule.details" [ngClass] ="{'is-invalid': this.formGroup.controls.details.errors && this.formSubbimited}">
             </mat-form-field>
 
             <label>Selecione um horário</label>
             <input mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
-            min-date="minDate" type="text" id="time2" format="HH:mm" short-time="false" ng-model="timeutc"
-            class=" md-input">
+            min-date="minDate" type="text" id="input-time-00" format="HH:mm" short-time="false" ng-model="timeutc"
+            class="md-input" [(ngModel)]="schedule.time" [ngClass] ="{'is-invalid': this.formGroup.controls.time.errors && this.formSubbimited}">
 
             <button (click)="addActivity('0')" mat-fab color="primary" aria-label="Salvar atividade diária">
                 <mat-icon>control_point</mat-icon>
@@ -227,7 +229,7 @@
 
         </mat-card-content>
   
-        <button mat-stroked-button class="btn-block">Salvar</button>
+        <button (click)="registerSchedule()" mat-stroked-button class="btn-block">Salvar</button>
   
       </form>
     </mat-card>

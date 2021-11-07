@@ -13,10 +13,12 @@ export class LoginComponent implements OnInit {
 
   email: string = '';
   password: string = '';
+  formGroup! : FormGroup
 
   constructor(private formBuilder: FormBuilder, private userApiService: UserApiService, private router: Router) { }
 
   ngOnInit(): void {
+    this.setForm();
   }
 
   async authenticateUser(){
@@ -28,14 +30,26 @@ export class LoginComponent implements OnInit {
 
     let userAuth = await this.userApiService.authenticate(user);
 
-    if(userAuth.token != "" || userAuth.token != undefined){
+    if(userAuth != null || userAuth != undefined){
 
       localStorage.setItem('hashToken', userAuth.token);
+
+      localStorage.setItem('userId', userAuth.id.toString());
 
       this.router.navigate(['/home']);
 
     }
 
+  }
+
+  private setForm(): void {
+
+    this.formGroup = this.formBuilder.group({
+      
+      email:['', [Validators.required]],
+      password:['', [Validators.required]],
+      
+    })
   }
 
 }

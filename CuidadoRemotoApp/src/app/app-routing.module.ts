@@ -19,11 +19,11 @@ const routes: Routes = [
     component: LoginRegisterComponent
   },
   {
-    path: 'schedule',
+    path: 'agendamento',
     component: ScheduleRegisterComponent
   },
   {
-    path: 'schedule/list',
+    path: 'agendamento/listar',
     component: ScheduleListComponent
   }
 ];

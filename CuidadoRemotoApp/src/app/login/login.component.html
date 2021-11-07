@@ -7,15 +7,20 @@
         </mat-card-title>
       </mat-card-header>
   
-      <form class="example-form">
+      <form class="example-form" (ngSubmit)="authenticateUser()" [formGroup]="formGroup">
         <mat-card-content>
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Email" [(ngModel)]="email">
           </mat-form-field>
-  
+          <div class="invalid-feedback" ngIf="this.formGroup.controls.name.errors?.required">
+            Campo nome é necessario
+          </div>
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Senha" [(ngModel)]="password">
           </mat-form-field>
+          <div class="invalid-feedback" ngIf="this.formGroup.controls.password.errors?.required">
+            Senha é necessaria
+          </div>
         </mat-card-content>
         <button onclick="authenticateUser()" mat-stroked-button>Entrar</button>
       </form>

@@ -11,23 +11,39 @@
         <mat-card-content>
           <mat-form-field class="example-full-width">
             <input matInput id="name-input" name="name-input" placeholder="Nome" [(ngModel)]="user.name" [ngClass] ="{'is-invalid': this.formGroup.controls.name.errors && this.formSubbimited}">
+            <div class="invalid-feedback" *ngIf="this.formGroup.controls.name.errors?.required">
+              Campo nome é necessario
+            </div>
           </mat-form-field>
   
           <mat-form-field class="example-full-width">
-            <input matInput id="email-input" name="email-input" placeholder="Email" [(ngModel)]="user.email" [ngClass] ="{'is-invalid': this.formGroup.controls.name.errors && this.formSubbimited}">
+            <input matInput id="email-input" name="email-input" placeholder="Email" [(ngModel)]="user.email" [ngClass] ="{'is-invalid': this.formGroup.controls.email.errors && this.formSubbimited}">
+            <div class="invalid-feedback" *ngIf="this.formGroup.controls.email.errors?.required">
+              Campo email é necessario
+            </div>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
             <input matInput id="phone-input" name="phone-input" placeholder="Telefone" [(ngModel)]="user.phone" mask="(00)0 0000-0000 || 0 00000000" [ngClass] ="{'is-invalid': this.formGroup.controls.name.errors && this.formSubbimited}">
+            <div class="invalid-feedback">
+              <p *ngIf="this.formGroup.controls.phone.errors?.required">Campo telefone é necessario</p>
+              <p *ngIf="this.formGroup.controls.phone.errors?.minlength">Campo telefone deve ter entre 10 e 11 caracteres</p>
+            </div>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
             <input matInput id="birth-input" name="birth-input" placeholder="Data de Nascimento" [(ngModel)]="user.birthDate" [ngClass] ="{'is-invalid': this.formGroup.controls.name.errors && this.formSubbimited}">
           </mat-form-field>
+          <div class="invalid-feedback" *ngIf="this.formGroup.controls.birthDate.errors?.required">
+            Data de nascimento é necessario
+          </div>
   
           <mat-form-field class="example-full-width">
             <input matInput id="password-input" name="password-input" placeholder="Senha" [(ngModel)]="user.password" [ngClass] ="{'is-invalid': this.formGroup.controls.name.errors && this.formSubbimited}">
           </mat-form-field>
+          <div class="invalid-feedback" *ngIf="this.formGroup.controls.password.errors?.required">
+            Senha é necessaria
+          </div>
   
           <mat-form-field class="example-full-width">
             <mat-label>Perfil do usuário</mat-label>
@@ -36,11 +52,14 @@
                 {{role.viewValue}}
               </mat-option>
             </mat-select>
+            <div class="invalid-feedback" *ngIf="this.formGroup.controls.role.errors?.required">
+              Perfil é necessario
+            </div>
           </mat-form-field>
   
         </mat-card-content>
   
-        <button (click)="registerUser()" mat-stroked-button class="btn-block">Registrar</button>
+        <button (click)="registerUser()" mat-stroked-button class="btn-block">Salvar</button>
   
       </form>
     </mat-card>
