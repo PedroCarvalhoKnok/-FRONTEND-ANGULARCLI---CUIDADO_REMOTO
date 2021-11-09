@@ -3,11 +3,12 @@
 <div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="box">
       <mat-card-header>
-        <mat-card-title>Cadastrar</mat-card-title>
+        <mat-card-title *ngIf="!editForm">Cadastrar</mat-card-title>
+        <mat-card-title *ngIf="editForm">Editar</mat-card-title>
       </mat-card-header>
   
-      <form class="example-form" (ngSubmit)="registerUser()" [formGroup]="formGroup">
-  
+      <form class="example-form" *ngIf="!editForm" (ngSubmit)="registerUser()" [formGroup]="formGroup">
+      <form class="example-form" *ngIf="editForm" (ngSubmit)="editUser()" [formGroup]="formGroup">
         <mat-card-content>
           <mat-form-field class="example-full-width">
             <input matInput id="name-input" name="name-input" placeholder="Nome" [(ngModel)]="user.name" [ngClass] ="{'is-invalid': this.formGroup.controls.name.errors && this.formSubbimited}">
@@ -59,8 +60,9 @@
   
         </mat-card-content>
   
-        <button (click)="registerUser()" mat-stroked-button class="btn-block">Salvar</button>
-  
+        <button (click)="registerUser()" *ngIf="!editForm" mat-stroked-button class="btn-block">Cadastrar</button>
+        <button (click)="editUser()" *ngIf="!editForm" mat-stroked-button class="btn-block">Editar</button>
+      </form>
       </form>
     </mat-card>
   </div>

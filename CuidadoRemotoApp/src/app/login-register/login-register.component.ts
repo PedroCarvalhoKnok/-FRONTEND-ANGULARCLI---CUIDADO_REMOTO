@@ -20,17 +20,46 @@ export class LoginRegisterComponent implements OnInit {
   user = new User();
   formGroup! : FormGroup
   formSubbimited: Boolean = false
+  editForm: Boolean = false
 
   UserRole: UserRole[] = [{value: 'resp', viewValue: 'Responsável'},{value: 'idoso', viewValue: 'Idoso(a)'},{value: 'saude', viewValue: 'Prof. Saúde'}];
 
   constructor(private formBuilder: FormBuilder, private userApiService: UserApiService, private router: Router, public dialog: MatDialog) { }
 
-  ngOnInit(): void {
+  async ngOnInit(){
+
+    let edit = localStorage.getItem('Edicao');
+    if(edit == 'E'){
+
+      let userId = localStorage.getItem('userId');
+
+      if(userId != '' || userId != undefined){
+
+        this.editForm = true;
+
+        let userSearched = await this.userApiService.getById(userId != null? userId : '');
+
+        this.user.name = userSearched.name;
+
+        this.user.email = userSearched.email;
+
+        this.user.phone = userSearched.phone;
+
+        this.user.password = userSearched.password;
+
+        this.user.role = userSearched.role;
+
+      }
+    }
     this.setForm();
   }
 
   openDialog() {
     this.dialog.open(DialogSucessRegisterUser);
+  }
+
+  openDialogEdit(){
+    this.dialog.open(DialogSucessEditUser);
   }
 
   async registerUser(){
@@ -46,7 +75,21 @@ export class LoginRegisterComponent implements OnInit {
 
     }
 
+  }
 
+  async editUser(){
+
+    this.formSubbimited = true;
+    if (this.formGroup.valid) {
+      let userEdited: User = this.formGroup.value as User;
+
+      let userRegistered = await this.userApiService.put(userEdited);
+
+      if(userRegistered != undefined || userRegistered != null)
+         this.openDialogEdit();
+      
+
+    }
   }
 
   private setForm(): void {
@@ -69,3 +112,9 @@ export class LoginRegisterComponent implements OnInit {
   templateUrl: '../dialogs/sucessUserRegister.html',
 })
 export class DialogSucessRegisterUser {}
+
+@Component({
+  selector: 'dialog-elements-example-dialog',
+  templateUrl: '../dialogs/sucessEditUser.html',
+})
+export class DialogSucessEditUser {}

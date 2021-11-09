@@ -185,7 +185,9 @@ export class ScheduleRegisterComponent implements OnInit{
 
         schedule.userId != null ? localStorage.getItem('userId'): '';
 
-        let scheduleInserted = await scheduleApi.post(schedule);
+        let tokenAuth = localStorage.getItem('hashToken');
+
+        let scheduleInserted = await scheduleApi.post(schedule, tokenAuth != null? tokenAuth: '');
 
         if(scheduleInserted != null || scheduleInserted != undefined){
           openDialog;

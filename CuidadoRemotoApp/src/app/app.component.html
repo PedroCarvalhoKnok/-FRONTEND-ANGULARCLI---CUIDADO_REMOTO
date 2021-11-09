@@ -22,7 +22,7 @@
       <mat-icon>account_circle</mat-icon>
     </a>
     <h4 class="name">Usuário Logado</h4>
-    <button routerLink="registrar" mat-button routerLink="home" class="menu-button">
+    <button (click)="editProfile()" mat-button routerLink="home" class="menu-button">
       Editar Perfil
     </button>
     <button mat-button routerLink="home" class="menu-button">
@@ -30,14 +30,6 @@
       <span>Home</span>
     </button>
     <mat-divider></mat-divider>
-    <button mat-button routerLink="agendamento/listar" class="menu-button">
-      <mat-icon>Agendamento semanal</mat-icon>
-      <span>Profile</span>
-    </button>
-    <button mat-button routerLink="agendamento" class="menu-button">
-      <mat-icon>Adicionar agendamento</mat-icon>
-      <span>Profile</span>
-    </button>
   </mat-sidenav>
 </mat-sidenav-container>
 <router-outlet></router-outlet>

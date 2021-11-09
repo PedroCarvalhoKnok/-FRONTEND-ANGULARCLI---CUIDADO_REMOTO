@@ -1,16 +1,29 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { User } from "../models/User";
+import config from "../apiconfig.json";
 @Injectable()
 
 export class UserApiService {
 
-     baseUrl: string = 'http://localhost:9091/api/users';
+     baseUrl: string = `${config}/api/users`;
 
     constructor(private http:HttpClient){
 
        
 
+    }
+
+    get(){
+
+        return this.http.get<User[]>(this.baseUrl).toPromise()
+            
+    }
+
+    getById(id: string){
+
+        return this.http.get<User>(this.baseUrl + '/' + id).toPromise()
+            
     }
 
     post(user: User){
