@@ -3,6 +3,7 @@ body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
+	overflow-y: scroll;
 }
 
 body {
@@ -21,9 +22,6 @@ body {
 	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
 }
 
-.main-wrapper {
-	height: 100%;
-}
 
 .positronx {
 	text-decoration: none;
@@ -31,6 +29,7 @@ body {
 }
 
 .box {
+	
 	position: relative;
 	top: 0;
 	opacity: 1;
@@ -42,8 +41,9 @@ body {
 	transform: scale(1);
 	-webkit-transform: scale(1);
 	-ms-transform: scale(1);
-	z-index: 5;
 	max-width: 330px;
+	margin-top: 100px !important;
+	
 }
 
 .box.back {

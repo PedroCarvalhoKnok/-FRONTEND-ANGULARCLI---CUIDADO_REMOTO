@@ -22,6 +22,13 @@ export class LoginRegisterComponent implements OnInit {
   formSubbimited: Boolean = false
   editForm: Boolean = false
 
+  nameValid: Boolean = false;
+  passwordValid: Boolean = false;
+  emailValid: Boolean = false;
+  phoneValid: Boolean = false;
+  birthValid: Boolean = false;
+  roleValid: Boolean = false;
+
   UserRole: UserRole[] = [{value: 'resp', viewValue: 'Responsável'},{value: 'idoso', viewValue: 'Idoso(a)'},{value: 'saude', viewValue: 'Prof. Saúde'}];
 
   constructor(private formBuilder: FormBuilder, private userApiService: UserApiService, private router: Router, public dialog: MatDialog) { }
@@ -51,7 +58,7 @@ export class LoginRegisterComponent implements OnInit {
 
       }
     }
-    this.setForm();
+    
   }
 
   openDialog() {
@@ -63,46 +70,64 @@ export class LoginRegisterComponent implements OnInit {
   }
 
   async registerUser(){
-    this.formSubbimited = true;
-    if (this.formGroup.valid) {
-      let userRegister: User = this.formGroup.value as User;
 
-      let userRegistered = await this.userApiService.post(userRegister);
+      if(!this.setForm())
+       return;
+
+      let userRegistered = await this.userApiService.post(this.user);
 
       if(userRegistered != undefined || userRegistered != null)
          this.openDialog();
       
 
-    }
-
   }
 
   async editUser(){
 
-    this.formSubbimited = true;
-    if (this.formGroup.valid) {
-      let userEdited: User = this.formGroup.value as User;
+    if(!this.setForm())
+      return;
 
-      let userRegistered = await this.userApiService.put(userEdited);
+      let userRegistered = await this.userApiService.put(this.user);
 
       if(userRegistered != undefined || userRegistered != null)
          this.openDialogEdit();
       
-
-    }
+    
   }
 
-  private setForm(): void {
+  private setForm(): Boolean {
 
-    this.formGroup = this.formBuilder.group({
+    if(this.user.name == '' || this.user.name == null || this.user.name == undefined){
+      this.nameValid = true;
+      return false;
+    }
+    
+    if(this.user.email == '' || this.user.email == null || this.user.email == undefined){
+      this.emailValid = true;
+      return false;
+    }
 
-      name:['', [Validators.required]],
-      email:['', [Validators.required]],
-      phone:['', [Validators.required, Validators.minLength(10), Validators.maxLength(11)]],
-      birthDate:['', [Validators.required]],
-      password:['', [Validators.required]],
-      role:['', [Validators.required]],
-    })
+    if(this.user.phone == '' && this.user.phone.length == 10 || this.user.phone.length == 11){
+      this.phoneValid = true;
+      return false;
+    }
+    if(this.user.role == '' || this.user.role == null || this.user.role == undefined){
+      this.roleValid = true;
+      return false;
+    }
+
+    if(this.user.password == '' || this.user.password == null || this.user.password == undefined){
+      this.passwordValid = true;
+      return false;
+    }
+
+    if(this.user.birthDate == '' || this.user.birthDate == null || this.user.birthDate == undefined){
+      this.birthValid = true;
+      return false;
+    }
+
+    return true;
+    
   }
 
 }

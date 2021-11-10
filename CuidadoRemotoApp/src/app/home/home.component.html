@@ -1,5 +1,6 @@
-<div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
-  <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
+<div class="content">
+<div class="grid-top" fxLayout="row wrap" fxLayoutGap="16px grid">
+  <div fxFlex="25%" fxFlex.xs="100%">
     <mat-card class="mat-elevation-z4">
       <mat-card-header>
         <mat-card-title>Minhas atividades da semana!</mat-card-title>
@@ -16,62 +17,57 @@
       </mat-card-actions>
     </mat-card>
     </div>
+    <div fxFlex="25%" fxFlex.xs="100%">
+      <mat-card class="mat-elevation-z4">
+        <mat-card-header>
+          <mat-card-title>Cadastre atividades para semana</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="https://observatorio3setor.org.br/wp-content/uploads/2019/06/1-idoso-1.jpg">
+        <mat-card-content>
+          <p>
+            Crie e monte seu agendamento semanal à sua escolha
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button routerLink="agendamento">Visitar</button>
+          <button mat-button>Avaliar</button>
+        </mat-card-actions>
+      </mat-card>
+      </div>
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
+        <mat-card class="mat-elevation-z4">
+          <mat-card-header>
+            <mat-card-title>Monitore os batimentos da melhor forma!</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="https://i.pinimg.com/564x/21/b7/82/21b78225953c1f1f817da2d8c92f9aa9.jpg">
+          <mat-card-content>
+            <p>
+              Visualize como anda seus batimentos e as médias
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>Visitar</button>
+            <button mat-button>Avaliar</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
+        <mat-card class="mat-elevation-z4">
+          <mat-card-header>
+            <mat-card-title>Encontre jogos!</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="https://image.freepik.com/vetores-gratis/icone-do-gamepad-para-jogar-arcade-videogame-para-jogador-design-personalizado_185390-205.jpg">
+          <mat-card-content>
+            <p>
+              Descubra novos jogos que melhor se adequem as suas vontades
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>Visitar</button>
+            <button mat-button>Avaliar</button>
+          </mat-card-actions>
+        </mat-card>
+        </div>
   </div>
-  <div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
-   <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
-    <mat-card class="mat-elevation-z4">
-      <mat-card-header>
-        <mat-card-title>Cadastre atividades para semana</mat-card-title>
-      </mat-card-header>
-      <img mat-card-image src="https://observatorio3setor.org.br/wp-content/uploads/2019/06/1-idoso-1.jpg">
-      <mat-card-content>
-        <p>
-          Crie e monte seu agendamento semanal à sua escolha
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button routerLink="agendamento">Visitar</button>
-        <button mat-button>Avaliar</button>
-      </mat-card-actions>
-    </mat-card>
-    </div>
-  </div>
-  <div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
-    <mat-card class="mat-elevation-z4">
-      <mat-card-header>
-        <mat-card-title>Monitore os batimentos da melhor forma!</mat-card-title>
-      </mat-card-header>
-      <img mat-card-image src="https://i.pinimg.com/564x/21/b7/82/21b78225953c1f1f817da2d8c92f9aa9.jpg">
-      <mat-card-content>
-        <p>
-          Visualize como anda seus batimentos e as médias
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>Visitar</button>
-        <button mat-button>Avaliar</button>
-      </mat-card-actions>
-    </mat-card>
-    </div>
-  </div>
-  <div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
-    <mat-card class="mat-elevation-z4">
-      <mat-card-header>
-        <mat-card-title>Encontre jogos!</mat-card-title>
-      </mat-card-header>
-      <img mat-card-image src="https://image.freepik.com/vetores-gratis/icone-do-gamepad-para-jogar-arcade-videogame-para-jogador-design-personalizado_185390-205.jpg">
-      <mat-card-content>
-        <p>
-          Descubra novos jogos que melhor se adequem as suas vontades
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>Visitar</button>
-        <button mat-button>Avaliar</button>
-      </mat-card-actions>
-    </mat-card>
-    </div>
   </div>
   <router-outlet></router-outlet>

@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginRegisterComponent } from './login-register/login-register.component';
 import { ScheduleRegisterComponent } from './schedule-register/schedule-register.component';
 import { ScheduleListComponent } from './schedule-list/schedule-list.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', 
@@ -23,8 +24,12 @@ const routes: Routes = [
     component: ScheduleRegisterComponent
   },
   {
-    path: 'agendamento/listar',
+    path: 'listar',
     component: ScheduleListComponent
+  },
+  {
+    path: 'inicio',
+    component: HomeComponent
   }
 ];
 

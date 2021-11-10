@@ -1,7 +1,13 @@
 .content {
+    padding-top: 200px;
     padding: 16px;
 }
 
 .content > mat-card {
+    padding-top: 200px;
     width: 200px;
+}
+
+.grid-top{
+    margin-top: 100px !important;
 }

@@ -6,24 +6,23 @@
           <img src="https://blog.pdffiller.com/app/uploads/2018/06/old-and-young-animated-correct.gif"  style="width:75%;">
         </mat-card-title>
       </mat-card-header>
-  
-      <form class="example-form" (ngSubmit)="authenticateUser()" [formGroup]="formGroup">
+      
         <mat-card-content>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Email" [(ngModel)]="email">
+            <input matInput placeholder="Nome" [(ngModel)]="email">
           </mat-form-field>
-          <div class="invalid-feedback" ngIf="this.formGroup.controls.name.errors?.required">
+          <div class="invalid-feedback" *ngIf="emailValid">
             Campo nome é necessario
           </div>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Senha" [(ngModel)]="password">
+            <input type="password" matInput placeholder="Senha" [(ngModel)]="password">
           </mat-form-field>
-          <div class="invalid-feedback" ngIf="this.formGroup.controls.password.errors?.required">
+          <div class="invalid-feedback" *ngIf="passwordValid">
             Senha é necessaria
           </div>
         </mat-card-content>
-        <button onclick="authenticateUser()" mat-stroked-button>Entrar</button>
-      </form>
+        <button class="btn-block" (click)="authenticateUser()" mat-stroked-button>Entrar</button>
+      
     </mat-card>
   
   </div>

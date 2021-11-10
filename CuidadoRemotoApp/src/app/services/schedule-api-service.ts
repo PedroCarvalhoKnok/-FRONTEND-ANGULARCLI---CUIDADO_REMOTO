@@ -1,13 +1,12 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { User } from "../models/User";
 import { Schedule } from "../models/Schedule";
 import config from "../apiconfig.json";
-@Injectable()
+@Injectable({ providedIn: 'root'})
 
 export class ScheduleApiService {
 
-     baseUrl: string = `${config}/api/schedule`;
+     baseUrl: string = `http://localhost:9091/api/schedule`;
 
     constructor(private http:HttpClient){
        

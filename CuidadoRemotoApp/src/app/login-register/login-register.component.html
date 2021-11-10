@@ -1,59 +1,58 @@
 
-
-<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+<div class="main-wrapper grid-top" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="box">
       <mat-card-header>
         <mat-card-title *ngIf="!editForm">Cadastrar</mat-card-title>
         <mat-card-title *ngIf="editForm">Editar</mat-card-title>
       </mat-card-header>
   
-      <form class="example-form" *ngIf="!editForm" (ngSubmit)="registerUser()" [formGroup]="formGroup">
-      <form class="example-form" *ngIf="editForm" (ngSubmit)="editUser()" [formGroup]="formGroup">
+      <!-- <form class="example-form" *ngIf="!editForm" (ngSubmit)="registerUser()" [formGroup]="formGroup">
+      <form class="example-form" *ngIf="editForm" (ngSubmit)="editUser()" [formGroup]="formGroup"> -->
         <mat-card-content>
           <mat-form-field class="example-full-width">
-            <input matInput id="name-input" name="name-input" placeholder="Nome" [(ngModel)]="user.name" [ngClass] ="{'is-invalid': this.formGroup.controls.name.errors && this.formSubbimited}">
-            <div class="invalid-feedback" *ngIf="this.formGroup.controls.name.errors?.required">
+            <input matInput id="name-input" name="name-input" placeholder="Nome" [(ngModel)]="user.name">
+            <div class="invalid-feedback" *ngIf="nameValid">
               Campo nome é necessario
             </div>
           </mat-form-field>
   
           <mat-form-field class="example-full-width">
-            <input matInput id="email-input" name="email-input" placeholder="Email" [(ngModel)]="user.email" [ngClass] ="{'is-invalid': this.formGroup.controls.email.errors && this.formSubbimited}">
-            <div class="invalid-feedback" *ngIf="this.formGroup.controls.email.errors?.required">
+            <input matInput id="email-input" name="email-input" placeholder="Email" [(ngModel)]="user.email">
+            <div class="invalid-feedback" *ngIf="emailValid">
               Campo email é necessario
             </div>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-            <input matInput id="phone-input" name="phone-input" placeholder="Telefone" [(ngModel)]="user.phone" mask="(00)0 0000-0000 || 0 00000000" [ngClass] ="{'is-invalid': this.formGroup.controls.name.errors && this.formSubbimited}">
-            <div class="invalid-feedback">
+            <input matInput id="phone-input" name="phone-input" placeholder="Telefone" [(ngModel)]="user.phone" mask="(00)0 0000-0000 || 0 00000000">
+            <div *ngIf="phoneValid">
               <p *ngIf="this.formGroup.controls.phone.errors?.required">Campo telefone é necessario</p>
               <p *ngIf="this.formGroup.controls.phone.errors?.minlength">Campo telefone deve ter entre 10 e 11 caracteres</p>
             </div>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-            <input matInput id="birth-input" name="birth-input" placeholder="Data de Nascimento" [(ngModel)]="user.birthDate" [ngClass] ="{'is-invalid': this.formGroup.controls.name.errors && this.formSubbimited}">
+            <input matInput id="birth-input" name="birth-input" placeholder="Data de Nascimento" [(ngModel)]="user.birthDate">
           </mat-form-field>
-          <div class="invalid-feedback" *ngIf="this.formGroup.controls.birthDate.errors?.required">
+          <div *ngIf="birthValid">
             Data de nascimento é necessario
           </div>
   
           <mat-form-field class="example-full-width">
-            <input matInput id="password-input" name="password-input" placeholder="Senha" [(ngModel)]="user.password" [ngClass] ="{'is-invalid': this.formGroup.controls.name.errors && this.formSubbimited}">
+            <input type="password" matInput id="password-input" name="password-input" placeholder="Senha" [(ngModel)]="user.password">
           </mat-form-field>
-          <div class="invalid-feedback" *ngIf="this.formGroup.controls.password.errors?.required">
+          <div *ngIf="passwordValid">
             Senha é necessaria
           </div>
   
           <mat-form-field class="example-full-width">
             <mat-label>Perfil do usuário</mat-label>
-            <mat-select [(ngModel)]="user.role" id="perfil-input" name="perfil-input"  [ngClass] ="{'is-invalid': this.formGroup.controls.name.errors && this.formSubbimited}">
+            <mat-select [(ngModel)]="user.role" id="perfil-input" name="perfil-input">
               <mat-option [value]="role.value" *ngFor="let role of UserRole">
                 {{role.viewValue}}
               </mat-option>
             </mat-select>
-            <div class="invalid-feedback" *ngIf="this.formGroup.controls.role.errors?.required">
+            <div *ngIf="roleValid">
               Perfil é necessario
             </div>
           </mat-form-field>
@@ -61,9 +60,9 @@
         </mat-card-content>
   
         <button (click)="registerUser()" *ngIf="!editForm" mat-stroked-button class="btn-block">Cadastrar</button>
-        <button (click)="editUser()" *ngIf="!editForm" mat-stroked-button class="btn-block">Editar</button>
-      </form>
-      </form>
+        <button (click)="editUser()" *ngIf="editForm" mat-stroked-button class="btn-block">Editar</button>
+      <!-- </form>
+      </form> -->
     </mat-card>
   </div>
 

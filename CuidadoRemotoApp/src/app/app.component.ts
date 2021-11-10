@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @ViewChild(MatSidenav)
+ @ViewChild(MatSidenav)
  sidenav!: MatSidenav;
 
  constructor(private observer: BreakpointObserver, private router: Router) {}

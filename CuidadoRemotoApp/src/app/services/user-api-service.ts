@@ -1,16 +1,14 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { User } from "../models/User";
-import config from "../apiconfig.json";
-@Injectable()
+//import config from "../apiconfig.json";
+@Injectable({ providedIn: 'root'})
 
 export class UserApiService {
 
-     baseUrl: string = `${config}/api/users`;
+     baseUrl: string = `http://localhost:9091/api/users`;
 
     constructor(private http:HttpClient){
-
-       
 
     }
 
@@ -28,10 +26,10 @@ export class UserApiService {
 
     post(user: User){
 
-        return this.http.post<User>(this.baseUrl + '/register', user).toPromise();
+        return this.http.post<User>(this.baseUrl + '/register', {"username": user.name, "password": user.password, "role": user.role, "phone": user.phone, "birth": user.birthDate, "email": user.email}).toPromise();
     }
 
-    delete(id: number){
+    delete(id: string){
             
         return this.http.delete<void>(this.baseUrl + '/' + id).toPromise()
     }
@@ -44,7 +42,7 @@ export class UserApiService {
 
     authenticate(user: User){
 
-        return this.http.post<User>(this.baseUrl + '/authenticate/',user).toPromise();
+        return this.http.post<User>(this.baseUrl + '/authenticate',{"username": user.email, "password": user.password}).toPromise();
             
     }
 

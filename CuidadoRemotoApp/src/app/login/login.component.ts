@@ -13,12 +13,14 @@ export class LoginComponent implements OnInit {
 
   email: string = '';
   password: string = '';
-  formGroup! : FormGroup
+  //formGroup! : FormGroup
+  emailValid: Boolean = false;
+  passwordValid: Boolean = false;
 
   constructor(private formBuilder: FormBuilder, private userApiService: UserApiService, private router: Router) { }
 
   ngOnInit(): void {
-    this.setForm();
+    
   }
 
   async authenticateUser(){
@@ -28,28 +30,31 @@ export class LoginComponent implements OnInit {
     user.email = this.email;
     user.password = this.password;
 
+    this.setForm(user.email, user.password);
+
     let userAuth = await this.userApiService.authenticate(user);
 
     if(userAuth != null || userAuth != undefined){
 
       localStorage.setItem('hashToken', userAuth.token);
 
-      localStorage.setItem('userId', userAuth.id.toString());
+      localStorage.setItem('userId', userAuth.id);
 
-      this.router.navigate(['/home']);
+      this.router.navigate(['/inicio']);
 
     }
 
   }
 
-  private setForm(): void {
+  private setForm(name: string, password: string): void {
 
-    this.formGroup = this.formBuilder.group({
-      
-      email:['', [Validators.required]],
-      password:['', [Validators.required]],
-      
-    })
+    if(name == '')
+      this.emailValid = true;
+
+    if(password == '')
+      this.passwordValid = true;
+
+    
   }
 
 }
