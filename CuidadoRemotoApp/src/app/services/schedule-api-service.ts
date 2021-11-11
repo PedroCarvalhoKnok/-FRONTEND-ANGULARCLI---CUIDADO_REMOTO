@@ -24,7 +24,7 @@ export class ScheduleApiService {
             
     }
 
-    getById(id: number, token: string){
+    getById(id: string, token: string){
 
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -42,10 +42,10 @@ export class ScheduleApiService {
             'Authorization': `Bearer ${token}`
         })
 
-        return this.http.post<Schedule>(this.baseUrl + '/register', schedule,{headers: headers}).toPromise();
+        return this.http.post<Schedule>(this.baseUrl + '/register', {"dayOfWeek": schedule.dayOfWeek,"category": schedule.category, "details": schedule.details, "time": schedule.time},{headers: headers}).toPromise();
     }
 
-    delete(id: number, token: string){
+    delete(id: string, token: string){
 
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',

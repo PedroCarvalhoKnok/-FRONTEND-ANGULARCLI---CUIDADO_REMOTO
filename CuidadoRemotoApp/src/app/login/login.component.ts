@@ -3,6 +3,7 @@ import { UserApiService } from '../services/user-api-service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../models/User';
+import { StoreService } from '../services/store.service';
 
 @Component({
   selector: 'app-login',
@@ -17,10 +18,10 @@ export class LoginComponent implements OnInit {
   emailValid: Boolean = false;
   passwordValid: Boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private userApiService: UserApiService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private userApiService: UserApiService, private router: Router,private storeService: StoreService) { }
 
   ngOnInit(): void {
-    
+    this.storeService.profileVisible = false;
   }
 
   async authenticateUser(){
@@ -39,6 +40,8 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('hashToken', userAuth.token);
 
       localStorage.setItem('userId', userAuth.id);
+
+    //  this.storeService.profileVisible = true;
 
       this.router.navigate(['/inicio']);
 

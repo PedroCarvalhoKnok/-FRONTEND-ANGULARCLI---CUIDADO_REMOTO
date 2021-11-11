@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Schedule } from '../models/Schedule';
 import { ScheduleApiService } from '../services/schedule-api-service';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { AppComponent } from '../app.component';
+import { StoreService } from '../services/store.service';
 
 
 interface DaysOfWeek {
@@ -17,10 +18,16 @@ interface DaysOfWeek {
   styleUrls: ['./schedule-register.component.scss']
 })
 
-export class ScheduleRegisterComponent implements OnInit{
+export class ScheduleRegisterComponent implements OnInit {
 
   dayOfWeek: string = "";
   incrementListMonday: number[] = [];
+  incrementListTuesday: number[] = [];
+  incrementListWednesday: number[] = [];
+  incrementListThursday: number[] = [];
+  incrementListFriday: number[] = [];
+  incrementListSaturday: number[] = [];
+  incrementListSunday: number[] = [];
   schedule = new Schedule();
 
   idInputMonday: number = 0;
@@ -39,67 +46,60 @@ export class ScheduleRegisterComponent implements OnInit{
   showFridayCard: boolean = false;
   showSaturdayCard: boolean = false;
   showSundayCard: boolean = false;
+  showButton: boolean = false;
+  errorCategory: boolean = false;
+  errorDetail: boolean = false;
+  errorTime: boolean = false;
 
-  tuesdayActivities: string = '';
-  wednesdayActivities: string = '';
-  thursdayActivities: string = '';
-  fridayActivities: string = '';
-  saturdayActivities: string = '';
-  sundayActivities: string = '';
-  
-  DaysOfWeek: DaysOfWeek[] = [{value: '0', viewValue: 'Domingo'},{value: '1', viewValue: 'Segunda'},{value: '2', viewValue: 'Terça'},{value: '3', viewValue: 'Quarta'},{value: '4', viewValue: 'Quinta'},{value: '5', viewValue: 'Sexta'},{value: '6', viewValue: 'Sábado'}];
 
-  constructor(private formBuilder: FormBuilder, private scheduleApiService: ScheduleApiService, public dialog: MatDialog, private appComponent: AppComponent) { 
-    
+  DaysOfWeek: DaysOfWeek[] = [{ value: '0', viewValue: 'Domingo' }, { value: '1', viewValue: 'Segunda-Feira' }, { value: '2', viewValue: 'Terça-Feira' }, { value: '3', viewValue: 'Quarta-Feira' }, { value: '4', viewValue: 'Quinta-Feira' }, { value: '5', viewValue: 'Sexta-Feira' }, { value: '6', viewValue: 'Sábado' }];
+
+  constructor(private formBuilder: FormBuilder, private scheduleApiService: ScheduleApiService, public dialog: MatDialog, private appComponent: AppComponent, private storeService: StoreService) {
+
   }
 
   ngOnInit(): void {
-    //this.appComponent.profileVisible = true;
+    this.storeService.profileVisible = true;
     //this.setForm();
   }
 
-  addActivity(value: string){
-    
+  addActivity(value: string) {
 
-    switch(value){
+
+    switch (value) {
       case '1':
-        //this.sundayActivities += this.addPartialElements(idInput,'0');
         this.incrementListMonday.push(this.idInputMonday++);
         break;
-      // case '1':
-      //   this.mondayActivities += this.addPartialElements(idInput, '1');
-      //   this.incrementList.push(`${idInput}-1`);
-      //   break;
-      // case '2':
-      //   this.tuesdayActivities += this.addPartialElements(idInput,'2');
-      //   this.incrementList.push(`${idInput}-2`);
-      //   break;
-      // case '3':
-      //   this.wednesdayActivities += this.addPartialElements(idInput,'3');
-      //   this.incrementList.push(`${idInput}-3`);
-      //   break;
-      // case '4':
-      //   this.thursdayActivities += this.addPartialElements(idInput,'4');
-      //   this.incrementList.push(`${idInput}-4`);
-      //   break;
-      // case '5':
-      //   this.fridayActivities += this.addPartialElements(idInput,'5');
-      //   this.incrementList.push(`${idInput}-5`);
-      //   break;
-      // case '6':
-      //   this.saturdayActivities += this.addPartialElements(idInput,'6');
-      //   this.incrementList.push(`${idInput}-6`);
-      //   break;
+      case '2':
+        this.incrementListTuesday.push(this.idInputTuesday++);
+        break;
+      case '3':
+        this.incrementListWednesday.push(this.idInputWednesday++);
+        break;
+      case '4':
+        this.incrementListThursday.push(this.idInputThursday++);
+        break;
+      case '5':
+        this.incrementListFriday.push(this.idInputFriday++);
+        break;
+      case '6':
+        this.incrementListSaturday.push(this.idInputSaturday++);
+        break;
+      case '0':
+        this.incrementListSunday.push(this.idInputSunday++);
+        break;
 
     }
   }
 
-  setVisibilityDay(){
+  setVisibilityDay() {
 
-    switch(this.dayOfWeek){
+    this.showButton = true;
+
+    switch (this.dayOfWeek) {
       case '0':
         this.showSundayCard = true;
-       //this.incrementList.push('0-0');
+        //this.incrementList.push('0-0');
         break;
       case '1':
         this.showMondayCard = true;
@@ -107,91 +107,160 @@ export class ScheduleRegisterComponent implements OnInit{
         break;
       case '2':
         this.showTuesdayCard = true;
-       // this.incrementList.push('0-2');
+        // this.incrementList.push('0-2');
         break;
       case '3':
         this.showWednesdayCard = true;
-       // this.incrementList.push('0-3');
+        // this.incrementList.push('0-3');
         break;
       case '4':
         this.showThursdayCard = true;
-       // this.incrementList.push('0-4');
+        // this.incrementList.push('0-4');
         break;
       case '5':
         this.showFridayCard = true;
-       // this.incrementList.push('0-5');
+        // this.incrementList.push('0-5');
         break;
       case '6':
         this.showSaturdayCard = true;
-       // this.incrementList.push('0-6');
+        // this.incrementList.push('0-6');
         break;
 
     }
   }
+  async executeActivityDay(listActivities: number[], day: string): Promise<any> {
 
-  // async registerSchedule(){
-  //   this.formSubbimited = true;
-  //   let weeklyActivities = this.incrementList;
-  //   let scheduleApi = this.scheduleApiService;
-  //   let openDialog = this.openDialog();
-  //   if(this.formGroup.valid){
+    let scheduleApi = this.scheduleApiService;
 
-  //     let schedule = new Schedule();
+    let schedule = this.schedule;
 
-  //     weeklyActivities.forEach(async function(activity){
-  //       let array = activity.split('-');
-  //       let item = array[0];
-  //       let dayWeek: string = '';
-  //       switch(array[1]){
-  //         case '0':
-  //           dayWeek = 'Domingo'
-  //           break;
-  //         case '1':
-  //           dayWeek = 'Segunda-Feira'
-  //           break;
-  //         case '2':
-  //           dayWeek = 'Terça-Feira'
-  //           break;
-  //         case '3':
-  //           dayWeek = 'Quarta-Feira'
-  //           break;
-  //         case '4':
-  //           dayWeek = 'Quinta-Feira'
-  //           break;
-  //         case '5':
-  //           dayWeek = 'Sexta-Feira'
-  //           break;
-  //         case '6':
-  //           dayWeek = 'Sábado'
-  //           break;
-  //       }
+    let listActivitiesIncluded: number[] = listActivities;
 
-  //       schedule.dayOfWeek = dayWeek;
-        
-  //       schedule.category != null ? document.getElementById(`input-cat-${item}${array[1]}`): '';
-  //       schedule.details != null ? document.getElementById(`input-det-${item}${array[1]}`): '';
-  //       schedule.time != null ? document.getElementById(`input-time-${item}${array[1]}`): '';
+    if (!listActivitiesIncluded.includes(0))
+      listActivitiesIncluded.push(0);
 
-  //       schedule.userId != null ? localStorage.getItem('userId'): '';
+    listActivitiesIncluded.forEach(async  (incrementMonday: number) => {
 
-  //       let tokenAuth = localStorage.getItem('hashToken');
+      let category = document.getElementById(`input-cat-${incrementMonday}${day}`);
 
-  //       let scheduleInserted = await scheduleApi.post(schedule, tokenAuth != null? tokenAuth: '');
+      let details = document.getElementById(`input-det-${incrementMonday}${day}`);
 
-  //       if(scheduleInserted != null || scheduleInserted != undefined){
-  //         openDialog;
-  //       }
-        
-        
-  //     })
-    
+      let time = document.getElementById(`input-time-${incrementMonday}${day}`);
 
-  //   }
-  // }
+      category != null ? schedule.category = `${category}` : '';
 
-  private setForm(): void {
+      details != null ? schedule.details = `${details}` : '';
 
-    
+      time != null ? schedule.time = `${time}` : '';
+
+      switch (day) {
+        case '0':
+          schedule.dayOfWeek = 'Domingo'
+          break;
+        case '1':
+          schedule.dayOfWeek = 'Segunda-Feira'
+          break;
+        case '2':
+          schedule.dayOfWeek = 'Terça-Feira'
+          break;
+        case '3':
+          schedule.dayOfWeek = 'Quarta-Feira'
+          break;
+        case '4':
+          schedule.dayOfWeek = 'Quinta-Feira'
+          break;
+        case '5':
+          schedule.dayOfWeek = 'Sexta-Feira'
+          break;
+        case '6':
+          schedule.dayOfWeek = 'Sábado'
+          break;
+      }
+
+      if(!this.setForm(schedule))
+          return;
+
+      let tokenAuth = localStorage.getItem('hashToken');
+
+      if (tokenAuth != null) {
+
+        let response = await scheduleApi.post(schedule, tokenAuth);
+
+        if (response != null)
+          return true;
+        else
+          return false;
+
+      }
+      else {
+        return false;
+      }
+
+    })
+
+  }
+
+  async registerSchedule() {
+
+    let responseGeneral = false;
+
+    if (this.incrementListMonday.length > 0) {
+      let response = await this.executeActivityDay(this.incrementListMonday, '1')
+
+      response == true ? responseGeneral = true : responseGeneral = false;
+    }
+    else if (this.incrementListTuesday.length > 0) {
+      let response = await this.executeActivityDay(this.incrementListTuesday, '2')
+      response == true ? responseGeneral = true : responseGeneral = false;
+    }
+    else if (this.incrementListWednesday.length > 0) {
+      let response = await this.executeActivityDay(this.incrementListWednesday, '3')
+      response == true ? responseGeneral = true : responseGeneral = false;
+    }
+    else if (this.incrementListThursday.length > 0) {
+      let response = await this.executeActivityDay(this.incrementListThursday, '4')
+      response == true ? responseGeneral = true : responseGeneral = false;
+    }
+    else if (this.incrementListFriday.length > 0) {
+      let response = await this.executeActivityDay(this.incrementListFriday, '5')
+      response == true ? responseGeneral = true : responseGeneral = false;
+    }
+    else if (this.incrementListSaturday.length > 0) {
+      let response = await this.executeActivityDay(this.incrementListSaturday, '6')
+      response == true ? responseGeneral = true : responseGeneral = false;
+    }
+    else if (this.incrementListSunday.length > 0) {
+      let response = await this.executeActivityDay(this.incrementListSunday, '0')
+      response == true ? responseGeneral = true : responseGeneral = false;
+
+    }
+
+    //exibir modal
+
+
+  }
+
+  setForm(schedule: Schedule): boolean {
+
+    if (schedule.category == null || schedule.category == undefined){
+      this.errorCategory = true;
+      return false;
+    }
+
+    if (schedule.details == null || schedule.details == undefined){
+      this.errorDetail = true;
+      return false;
+    }
+
+    if (schedule.time == null || schedule.time == undefined){
+      this.errorTime = true;
+      return false;
+
+    }
+
+    return true;
+
+
   }
 
   openDialog() {
@@ -204,5 +273,5 @@ export class ScheduleRegisterComponent implements OnInit{
   selector: 'dialog-elements-example-dialog',
   templateUrl: '../dialogs/sucessScheduleRegister.html',
 })
-export class DialogSucessRegisterSchedule {}
+export class DialogSucessRegisterSchedule { }
 
