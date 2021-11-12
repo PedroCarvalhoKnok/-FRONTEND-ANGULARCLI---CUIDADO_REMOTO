@@ -68,25 +68,39 @@ export class ScheduleRegisterComponent implements OnInit {
 
     switch (value) {
       case '1':
-        this.incrementListMonday.push(this.idInputMonday++);
+        this.idInputMonday++;
+        let idIncrement = this.idInputMonday
+        this.incrementListMonday.push(idIncrement);
         break;
       case '2':
-        this.incrementListTuesday.push(this.idInputTuesday++);
+        this.idInputTuesday++;
+        let idIncrement1 = this.idInputTuesday
+        this.incrementListTuesday.push(idIncrement1);
         break;
       case '3':
-        this.incrementListWednesday.push(this.idInputWednesday++);
+        this.idInputWednesday++;
+        let idIncrement2 = this.idInputWednesday
+        this.incrementListWednesday.push(idIncrement2);
         break;
       case '4':
-        this.incrementListThursday.push(this.idInputThursday++);
+        this.idInputThursday++;
+        let idIncrement3 = this.idInputThursday
+        this.incrementListThursday.push(idIncrement3);
         break;
       case '5':
-        this.incrementListFriday.push(this.idInputFriday++);
+        this.idInputFriday++;
+        let idIncrement4 = this.idInputFriday
+        this.incrementListFriday.push(idIncrement4);
         break;
       case '6':
-        this.incrementListSaturday.push(this.idInputSaturday++);
+        this.idInputSaturday++;
+        let idIncrement5 = this.idInputSaturday
+        this.incrementListSaturday.push(idIncrement5);
         break;
       case '0':
-        this.incrementListSunday.push(this.idInputSunday++);
+        this.idInputMonday++;
+        let idIncrement6 = this.idInputMonday
+        this.incrementListSunday.push(idIncrement6);
         break;
 
     }
@@ -135,17 +149,17 @@ export class ScheduleRegisterComponent implements OnInit {
     let schedule = this.schedule;
 
     let listActivitiesIncluded: number[] = listActivities;
-
+    
     if (!listActivitiesIncluded.includes(0))
       listActivitiesIncluded.push(0);
 
     listActivitiesIncluded.forEach(async  (incrementMonday: number) => {
 
-      let category = document.getElementById(`input-cat-${incrementMonday}${day}`);
+      let category = (<HTMLInputElement>document.getElementById(`input-cat-${incrementMonday}${day}`)).value;
 
-      let details = document.getElementById(`input-det-${incrementMonday}${day}`);
+      let details = (<HTMLInputElement>document.getElementById(`input-det-${incrementMonday}${day}`)).value;
 
-      let time = document.getElementById(`input-time-${incrementMonday}${day}`);
+      let time = (<HTMLInputElement>document.getElementById(`input-time-${incrementMonday}${day}`)).value;
 
       category != null ? schedule.category = `${category}` : '';
 
@@ -184,19 +198,23 @@ export class ScheduleRegisterComponent implements OnInit {
 
       if (tokenAuth != null) {
 
-        let response = await scheduleApi.post(schedule, tokenAuth);
+        let resp = await scheduleApi.post(schedule, tokenAuth);
 
-        if (response != null)
-          return true;
-        else
-          return false;
+        console.log(resp);
 
-      }
-      else {
-        return false;
       }
 
     })
+
+    this.incrementListMonday = [];
+    this.incrementListTuesday = [];
+    this.incrementListWednesday = [];
+    this.incrementListThursday = [];
+    this.incrementListFriday = [];
+    this.incrementListSaturday = [];
+    this.incrementListSunday = [];
+
+    return true;
 
   }
 
@@ -204,7 +222,9 @@ export class ScheduleRegisterComponent implements OnInit {
 
     let responseGeneral = false;
 
-    if (this.incrementListMonday.length > 0) {
+    console.log(this.incrementListMonday);
+
+    if (this.incrementListMonday.length >= 0) {
       let response = await this.executeActivityDay(this.incrementListMonday, '1')
 
       response == true ? responseGeneral = true : responseGeneral = false;

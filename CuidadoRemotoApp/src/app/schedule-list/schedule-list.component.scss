@@ -36,13 +36,12 @@ body {
 	opacity: 1;
 	float: left;
 	padding: 60px 50px 40px 50px;
-	width: 100%;
+	width: 75%;
 	background: #fff;
 	border-radius: 10px;
 	transform: scale(1);
 	-webkit-transform: scale(1);
 	-ms-transform: scale(1);
-	max-width: 330px;
 }
 
 .box.back {
@@ -106,6 +105,23 @@ body {
 	padding: 0.8375em 0;
 }
 
-table {
+.table {
     width: 100%;
+	
   }
+
+  .mat-row {
+	height: auto;
+  }
+  
+  .mat-cell {
+	padding: 30px 30px 8px 0;
+  }
+
+  .mat-header-cell{
+	padding: 30px 30px 8px 0;
+  }
+
+.mat-card-title {
+    padding-bottom: 50px;
+}

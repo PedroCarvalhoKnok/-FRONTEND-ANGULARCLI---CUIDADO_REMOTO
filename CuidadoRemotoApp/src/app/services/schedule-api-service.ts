@@ -42,7 +42,7 @@ export class ScheduleApiService {
             'Authorization': `Bearer ${token}`
         })
 
-        return this.http.post<Schedule>(this.baseUrl + '/register', {"dayOfWeek": schedule.dayOfWeek,"category": schedule.category, "details": schedule.details, "time": schedule.time},{headers: headers}).toPromise();
+        return this.http.post<Schedule>(this.baseUrl, {"scheduleName": schedule.category,"diaSemana": schedule.dayOfWeek, "detalhes": schedule.details, "agendamento": schedule.time},{headers: headers}).toPromise();
     }
 
     delete(id: string, token: string){

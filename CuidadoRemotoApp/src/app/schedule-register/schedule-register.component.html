@@ -25,6 +25,8 @@
 
         <div *ngIf="showMondayCard">
 
+            <mat-divider></mat-divider>
+
             <h4>Segunda Feira</h4>
 
             <h4>Categoria da Atividade</h4>
@@ -45,14 +47,14 @@
             </div>
 
             <h4>Selecione um horário</h4>
-            <input matInput mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
+            <input matInput mdc-datetime-picker="" date="false" time="true" placeholder="Horário" minutes="true"
             min-date="minDate" type="text" id="input-time-01" format="HH:mm" short-time="false" ng-model="timeutc"
             class="md-input" [(ngModel)]="schedule.time">
             <div class="invalid-feedback" *ngIf="errorTime">
                 Horário é necessarios
             </div>
 
-            <div buttons-cad>
+            <div class="buttons-cad">
             <button (click)="addActivity('1')" mat-fab color="primary" aria-label="Salvar atividade diária">
                 <mat-icon>control_point</mat-icon>
             </button>
@@ -63,22 +65,24 @@
             </div>
 
             <div *ngFor="let increment of this.incrementListMonday">
-                <mat-form-field>
-                    <input id="input-cat-{{increment}}1" matInput placeholder="Categoria" required>
-                    </mat-form-field> 
+                <mat-divider></mat-divider>
                     <mat-form-field>
-                    <textarea id="input-det-{{increment}}1" matInput placeholder="Detalhes">
-                    </textarea required>
-                    </mat-form-field>
-                    <input matInput id="input-time-{{increment}}1" mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
+                    <input matInput id="input-cat-{{increment}}1" placeholder="Categoria" required>
+                    </mat-form-field> 
+                    <textarea matInput id="input-det-{{increment}}1" placeholder="Detalhes">
+                    </textarea>
+                    <mat-form-field>
+                    <input matInput id="input-time-{{increment}}1" mdc-datetime-picker="" date="false" time="true" placeholder="Horário" minutes="true"
                     min-date="minDate" type="text" format="HH:mm" short-time="false" ng-model="timeutc"
                     class="md-input" required>
+                    </mat-form-field>
             </div>
-            
 
         </div>
 
         <div *ngIf="showTuesdayCard">
+
+            <mat-divider></mat-divider>
 
             <h4>Terça Feira</h4>
             
@@ -100,7 +104,7 @@
             </div>
             
             <h4>Selecione um horário</h4>
-            <input matInput mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
+            <input matInput mdc-datetime-picker="" date="false" time="true" placeholder="Horário" minutes="true"
             min-date="minDate" type="text" id="input-time-02" format="HH:mm" short-time="false" ng-model="timeutc"
             class=" md-input" [(ngModel)]="schedule.time">
             <div class="invalid-feedback" *ngIf="errorTime">
@@ -118,21 +122,24 @@
             </div>
 
             <div *ngFor="let increment of this.incrementListTuesday">
-                <mat-form-field>
-                    <input id="input-cat-{{increment}}2" matInput placeholder="Categoria" required>
-                    </mat-form-field> 
+                <mat-divider></mat-divider>
                     <mat-form-field>
-                    <textarea id="input-det-{{increment}}2" matInput placeholder="Detalhes">
-                    </textarea required>
-                    </mat-form-field>
-                    <input matInput id="input-time-{{increment}}2" mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
+                    <input matInput id="input-cat-{{increment}}2" placeholder="Categoria" required>
+                    </mat-form-field> 
+                    <textarea matInput id="input-det-{{increment}}2" placeholder="Detalhes" required>
+                    </textarea>
+                    <mat-form-field>
+                    <input matInput id="input-time-{{increment}}2" mdc-datetime-picker="" date="false" time="true" placeholder="Horário" minutes="true"
                     min-date="minDate" type="text" format="HH:mm" short-time="false" ng-model="timeutc"
                     class="md-input" required>
+                    </mat-form-field>
             </div>
 
         </div>
 
         <div *ngIf="showWednesdayCard">
+
+            <mat-divider></mat-divider>
 
             <h4>Quarta Feira</h4>
 
@@ -154,7 +161,7 @@
             </div>
 
             <h4>Selecione um horário</h4>
-            <input mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
+            <input mdc-datetime-picker="" date="false" time="true" placeholder="Horário" minutes="true"
             min-date="minDate" type="text" id="input-time-03" format="HH:mm" short-time="false" ng-model="timeutc"
             class=" md-input" [(ngModel)]="schedule.time">
             <div class="invalid-feedback" *ngIf="errorTime">
@@ -172,21 +179,24 @@
             </div>
 
             <div *ngFor="let increment of this.incrementListWednesday">
+                <mat-divider></mat-divider>
                     <mat-form-field>
-                    <input id="input-cat-{{increment}}3" matInput placeholder="Categoria" required>
+                    <input matInput id="input-cat-{{increment}}3" placeholder="Categoria" required>
                     </mat-form-field> 
-                    <mat-form-field>
-                    <textarea id="input-det-{{increment}}3" matInput placeholder="Detalhes" required>
+                    <textarea matInput id="input-det-{{increment}}3" placeholder="Detalhes" required>
                     </textarea>
-                    </mat-form-field>
-                    <input id="input-time-{{increment}}3" mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
+                    <mat-form-field>
+                    <input id="input-time-{{increment}}3" mdc-datetime-picker="" date="false" time="true" placeholder="Horário" minutes="true"
                     min-date="minDate" type="text" format="HH:mm" short-time="false" ng-model="timeutc"
                     class="md-input" required>
+                    </mat-form-field>
             </div>
 
         </div>
 
         <div *ngIf="showThursdayCard">
+
+            <mat-divider></mat-divider>
 
             <h4>Quinta Feira</h4>
 
@@ -207,7 +217,7 @@
             </div>
 
             <h4>Selecione um horário</h4>
-            <textarea matInput mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
+            <textarea matInput mdc-datetime-picker="" date="false" time="true" placeholder="Horário" minutes="true"
             min-date="minDate" type="text" id="input-time-04" format="HH:mm" short-time="false" ng-model="timeutc"
             class=" md-input" [(ngModel)]="schedule.time">
             </textarea>
@@ -225,21 +235,24 @@
             </button>
             </div>
             <div *ngFor="let increment of this.incrementListThursday">
-                <mat-form-field>
-                    <input id="input-cat-{{increment}}4" matInput placeholder="Categoria" required>
-                    </mat-form-field> 
+                <mat-divider></mat-divider>
                     <mat-form-field>
-                    <textarea matInput id="input-det-{{increment}}4" matInput placeholder="Detalhes" required>
+                    <input matInput id="input-cat-{{increment}}4" placeholder="Categoria" required>
+                    </mat-form-field> 
+                    <textarea matInput id="input-det-{{increment}}4" placeholder="Detalhes" required>
                     </textarea>
-                    </mat-form-field>
-                    <input id="input-time-{{increment}}4" mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
+                    <mat-form-field>
+                    <input id="input-time-{{increment}}4" mdc-datetime-picker="" date="false" time="true" placeholder="Horário" minutes="true"
                     min-date="minDate" type="text" format="HH:mm" short-time="false" ng-model="timeutc"
                     class="md-input" required>
+                    </mat-form-field>
             </div>
 
         </div>
 
         <div *ngIf="showFridayCard">
+
+            <mat-divider></mat-divider>
 
             <h4>Sexta Feira</h4>
 
@@ -279,21 +292,24 @@
             </button>
             </div>
             <div *ngFor="let increment of this.incrementListFriday">
-                <mat-form-field>
-                    <input id="input-cat-{{increment}}5" matInput placeholder="Categoria" required>
-                    </mat-form-field> 
+                <mat-divider></mat-divider>
                     <mat-form-field>
-                    <textarea id="input-det-{{increment}}5" matInput placeholder="Detalhes" required>
+                    <input matInput id="input-cat-{{increment}}5" placeholder="Categoria" required>
+                    </mat-form-field> 
+                    <textarea matInput id="input-det-{{increment}}5" placeholder="Detalhes" required>
                     </textarea>
-                    </mat-form-field>
-                    <input matInput id="input-time-{{increment}}5" mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
+                    <mat-form-field>
+                    <input matInput id="input-time-{{increment}}5" mdc-datetime-picker="" date="false" time="true" placeholder="Horário" minutes="true"
                     min-date="minDate" type="text" format="HH:mm" short-time="false" ng-model="timeutc"
                     class="md-input" required>
+                    </mat-form-field>
             </div>
 
         </div>
 
         <div *ngIf="showSaturdayCard">
+
+            <mat-divider></mat-divider>
 
             <h4>Sábado</h4>
 
@@ -315,7 +331,7 @@
             </div>
 
             <h4>Selecione um horário</h4>
-            <input mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
+            <input mdc-datetime-picker="" date="false" time="true" placeholder="Horário" minutes="true"
             min-date="minDate" type="text" id="input-time-06" format="HH:mm" short-time="false" ng-model="timeutc"
             class=" md-input" [(ngModel)]="schedule.time">
             <div class="invalid-feedback" *ngIf="errorDetail">
@@ -333,21 +349,24 @@
             </div>
             
             <div *ngFor="let increment of this.incrementListSaturday">
-                <mat-form-field>
+                <mat-divider></mat-divider>
+                    <mat-form-field>
                     <input id="input-cat-{{increment}}6" matInput placeholder="Categoria" required>
                     </mat-form-field> 
-                    <mat-form-field>
                     <textarea id="input-det-{{increment}}6" matInput placeholder="Detalhes" required>
                     </textarea>
-                    </mat-form-field>
-                    <input matInput id="input-time-{{increment}}6" mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
+                    <mat-form-field>
+                    <input matInput id="input-time-{{increment}}6" mdc-datetime-picker="" date="false" time="true" placeholder="Horário" minutes="true"
                     min-date="minDate" type="text" format="HH:mm" short-time="false" ng-model="timeutc"
                     class="md-input" required>
+                    </mat-form-field>
             </div>
 
         </div>
 
         <div *ngIf="showSundayCard">
+
+            <mat-divider></mat-divider>
 
             <h4>Domingo</h4>
 
@@ -387,21 +406,22 @@
             </div>
             
             <div *ngFor="let increment of this.incrementListSunday">
+                    <mat-divider></mat-divider>
                     <mat-form-field>
                     <input id="input-cat-{{increment}}0" matInput placeholder="Categoria" required>
                     </mat-form-field> 
-                    <mat-form-field>
                     <textarea id="input-det-{{increment}}0" matInput placeholder="Detalhes" required>
                     </textarea>
-                    </mat-form-field>
+                    <mat-form-field>
                     <input matInput id="input-time-{{increment}}0" mdc-datetime-picker="" date="false" time="true" placeholder="Time" minutes="true"
                     min-date="minDate" type="text" format="HH:mm" short-time="false" ng-model="timeutc"
                     class="md-input" required>
+                    </mat-form-field>
             </div>
 
         </div>
   
-        <button class="btn-block" *ngIf="showButton" (click)="registerSchedule()" mat-stroked-button >Salvar</button>
+        <button class="btn-block" (click)="registerSchedule()" *ngIf="showButton" mat-stroked-button> Salvar</button>
   
       
     </div>

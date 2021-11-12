@@ -18,20 +18,24 @@ export class ScheduleListComponent implements OnInit {
 
   DaysOfWeek: DaysOfWeek[] = [{ value: '0', viewValue: 'Domingo' }, { value: '1', viewValue: 'Segunda' }, { value: '2', viewValue: 'Terça' }, { value: '3', viewValue: 'Quarta' }, { value: '4', viewValue: 'Quinta' }, { value: '5', viewValue: 'Sexta' }, { value: '6', viewValue: 'Sábado' }];
 
-  dataSource!: Schedule[];
+  dataSource: any[] = [{dayOfWeek : 'Segunda-Feira', category: 'exercicio', details: '3x15', time: '17:09'},
+  {dayOfWeek : 'Terça-Feira', category: 'medicamentos', details: '40mg', time: '17:00'}];
+
+  displayedColumns: string[] = ['dayOfWeek','category', 'details', 'time', 'acoes'];
 
   constructor(private scheduleApiService: ScheduleApiService,private matDialogue: MatDialog) { }
 
   async ngOnInit() {
     //this.appComponent.profileVisible = true;
 
-    let userId = localStorage.getItem('userId');
+    // let userId = localStorage.getItem('userId');
 
-    let token = localStorage.getItem('hashToken');
+    // let token = localStorage.getItem('hashToken');
 
-    if (userId != null && token != null) {
-      this.dataSource = await this.scheduleApiService.getById(userId, token);
-    }
+    // if (userId != null && token != null) {
+    //   this.dataSource = await this.scheduleApiService.getById(userId, token);
+    // }
+
 
   }
 
@@ -57,7 +61,9 @@ export class ScheduleListComponent implements OnInit {
 
   }
 
-  open(schedule: Schedule): void{
+  open(schedule: any): void{
+
+    console.log(schedule);
 
     this.matDialogue.open(DialogEditSchedule, {
       data: {
@@ -78,4 +84,8 @@ export class ScheduleListComponent implements OnInit {
 })
 export class DialogEditSchedule { 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Schedule) {}
+
+  onClick(){
+    
+  }
 }
