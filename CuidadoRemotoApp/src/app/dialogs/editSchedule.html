@@ -3,20 +3,20 @@
   <h4>Dados do Agendamento</h4>
   <div>
     <label mat-label>Dia da semana</label><br/>
-    <input style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput (click)="onClick()" value="{{data.dayOfWeek}}">
+    <input id="dia" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" value="{{data.diaSemana}}">
   </div>
   <div>
     <label mat-label>Categoria</label><br/>
-    <input style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput (click)="onClick()" value="{{data.category}}">
+    <input id="schedule-name" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput value="{{data.scheduleName}}">
   </div>
   <div>
     <label mat-label>Detalhes</label><br/>
-    <textarea style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput (click)="onClick()" value="{{data.details}}">
+    <textarea id="detalhes" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput value="{{data.detalhes}}">
     </textarea>
   </div>
   <div>
     <label mat-label>Horário</label><br/>
-    <input style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput (click)="onClick()" value="{{data.time}}">
+    <input id="horario" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput value="{{data.agendamento}}">
   </div>
-  <button style="border: none; padding: 15px 32px; text-align: center; font-size: 16px; display: inline-block;">Editar</button>
+  <button mat-button (click)="EditSchedule(data)" style="border: none; padding: 15px 32px; text-align: center; font-size: 16px; display: inline-block;">Editar</button>
 </div>

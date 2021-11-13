@@ -35,11 +35,13 @@ export class LoginComponent implements OnInit {
 
     let userAuth = await this.userApiService.authenticate(user);
 
+    console.log(userAuth);
+
     if(userAuth != null || userAuth != undefined){
 
       localStorage.setItem('hashToken', userAuth.token);
 
-      localStorage.setItem('userId', userAuth.id);
+      localStorage.setItem('idUser', userAuth.userId);
 
     //  this.storeService.profileVisible = true;
 

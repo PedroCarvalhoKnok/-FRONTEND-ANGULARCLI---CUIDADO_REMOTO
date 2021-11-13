@@ -31,7 +31,11 @@ export class ScheduleApiService {
             'Authorization': `Bearer ${token}`
         })
 
-        return this.http.get<Schedule[]>(this.baseUrl + '/' + id,{headers: headers}).toPromise()
+        return this.http.get<Schedule[]>(this.baseUrl + '/' + id,{headers: headers}).toPromise().then(function(resp){
+            return resp;
+        }, function(err) {
+            return err;
+        });
             
     }
 
@@ -42,7 +46,11 @@ export class ScheduleApiService {
             'Authorization': `Bearer ${token}`
         })
 
-        return this.http.post<Schedule>(this.baseUrl, {"scheduleName": schedule.category,"diaSemana": schedule.dayOfWeek, "detalhes": schedule.details, "agendamento": schedule.time},{headers: headers}).toPromise();
+         this.http.post<Schedule>(this.baseUrl, {"scheduleName": schedule.category,"diaSemana": schedule.dayOfWeek, "detalhes": schedule.details, "agendamento": schedule.time, "userId": schedule.userId},{headers: headers}).toPromise().then(function(resp){
+            return resp;
+        }, function(err) {
+            return err;
+        });
     }
 
     delete(id: string, token: string){
@@ -52,17 +60,27 @@ export class ScheduleApiService {
             'Authorization': `Bearer ${token}`
         })
             
-        return this.http.delete<void>(this.baseUrl + '/' + id).toPromise()
+        return this.http.delete<void>(this.baseUrl + '/' + id, {headers: headers}).toPromise().then(function(resp){
+            return resp;
+        }, function(err) {
+            return err;
+        });
     }
 
-    put(schedule: Schedule, token: string){
+    put(schedule: any, token: string){
 
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         })
 
-        return this.http.put<Schedule>(this.baseUrl, schedule).toPromise()
+        console.log(schedule);
+
+        this.http.put<any>(this.baseUrl,{"scheduleName": schedule.scheduleName,"diaSemana": schedule.diaSemana, "detalhes": schedule.detalhes, "agendamento": schedule.agendamento, "_id": schedule._id},{headers: headers}).toPromise().then(function(resp){
+            return resp;
+        }, function(err) {
+            return err;
+        });
             
     }
 

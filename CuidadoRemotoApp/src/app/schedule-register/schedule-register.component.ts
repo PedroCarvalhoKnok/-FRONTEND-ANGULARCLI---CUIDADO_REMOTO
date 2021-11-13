@@ -106,6 +106,13 @@ export class ScheduleRegisterComponent implements OnInit {
     }
   }
 
+  clearFields(){
+    this.schedule.category = '';
+    this.schedule.dayOfWeek = '';
+    this.schedule.details = '';
+    this.schedule.time = '';
+  }
+
   setVisibilityDay() {
 
     this.showButton = true;
@@ -113,31 +120,59 @@ export class ScheduleRegisterComponent implements OnInit {
     switch (this.dayOfWeek) {
       case '0':
         this.showSundayCard = true;
-        //this.incrementList.push('0-0');
+        if(this.showMondayCard || this.showTuesdayCard || this.showWednesdayCard || this.showThursdayCard || this.showFridayCard || this.showSaturdayCard){
+        this.schedule.category = '';
+        this.schedule.details = '';
+        this.schedule.time = '';
+        }
         break;
       case '1':
         this.showMondayCard = true;
-        //this.incrementList.push('0-1');
+        if(this.showSundayCard || this.showTuesdayCard || this.showWednesdayCard || this.showThursdayCard || this.showFridayCard || this.showSaturdayCard){
+        this.schedule.category = '';
+        this.schedule.details = '';
+        this.schedule.time = '';
+        }
         break;
       case '2':
         this.showTuesdayCard = true;
-        // this.incrementList.push('0-2');
+        if(this.showSundayCard || this.showMondayCard || this.showWednesdayCard || this.showThursdayCard || this.showFridayCard || this.showSaturdayCard){
+          this.schedule.category = '';
+          this.schedule.details = '';
+          this.schedule.time = '';
+          }
         break;
       case '3':
         this.showWednesdayCard = true;
-        // this.incrementList.push('0-3');
+        if(this.showSundayCard || this.showTuesdayCard || this.showMondayCard || this.showThursdayCard || this.showFridayCard || this.showSaturdayCard){
+          this.schedule.category = '';
+          this.schedule.details = '';
+          this.schedule.time = '';
+        }
         break;
       case '4':
         this.showThursdayCard = true;
-        // this.incrementList.push('0-4');
+        if(this.showSundayCard || this.showTuesdayCard || this.showWednesdayCard || this.showMondayCard || this.showFridayCard || this.showSaturdayCard){
+          this.schedule.category = '';
+          this.schedule.details = '';
+          this.schedule.time = '';
+        }
         break;
       case '5':
         this.showFridayCard = true;
-        // this.incrementList.push('0-5');
+        if(this.showSundayCard || this.showTuesdayCard || this.showWednesdayCard || this.showMondayCard || this.showThursdayCard || this.showSaturdayCard){
+          this.schedule.category = '';
+          this.schedule.details = '';
+          this.schedule.time = '';
+        }
         break;
       case '6':
         this.showSaturdayCard = true;
-        // this.incrementList.push('0-6');
+        if(this.showSundayCard || this.showTuesdayCard || this.showWednesdayCard || this.showMondayCard || this.showThursdayCard || this.showFridayCard){
+          this.schedule.category = '';
+          this.schedule.details = '';
+          this.schedule.time = '';
+        }
         break;
 
     }
@@ -166,6 +201,10 @@ export class ScheduleRegisterComponent implements OnInit {
       details != null ? schedule.details = `${details}` : '';
 
       time != null ? schedule.time = `${time}` : '';
+
+      let userId = localStorage.getItem('idUser');
+
+      userId != undefined ? schedule.userId = userId: schedule.userId = '';
 
       switch (day) {
         case '0':
@@ -214,7 +253,7 @@ export class ScheduleRegisterComponent implements OnInit {
     this.incrementListSaturday = [];
     this.incrementListSunday = [];
 
-    return true;
+    this.openDialog();
 
   }
 
@@ -229,33 +268,32 @@ export class ScheduleRegisterComponent implements OnInit {
 
       response == true ? responseGeneral = true : responseGeneral = false;
     }
-    else if (this.incrementListTuesday.length > 0) {
+    else if (this.incrementListTuesday.length >= 0) {
       let response = await this.executeActivityDay(this.incrementListTuesday, '2')
       response == true ? responseGeneral = true : responseGeneral = false;
     }
-    else if (this.incrementListWednesday.length > 0) {
+    else if (this.incrementListWednesday.length >= 0) {
       let response = await this.executeActivityDay(this.incrementListWednesday, '3')
       response == true ? responseGeneral = true : responseGeneral = false;
     }
-    else if (this.incrementListThursday.length > 0) {
+    else if (this.incrementListThursday.length >= 0) {
       let response = await this.executeActivityDay(this.incrementListThursday, '4')
       response == true ? responseGeneral = true : responseGeneral = false;
     }
-    else if (this.incrementListFriday.length > 0) {
+    else if (this.incrementListFriday.length >= 0) {
       let response = await this.executeActivityDay(this.incrementListFriday, '5')
       response == true ? responseGeneral = true : responseGeneral = false;
     }
-    else if (this.incrementListSaturday.length > 0) {
+    else if (this.incrementListSaturday.length >= 0) {
       let response = await this.executeActivityDay(this.incrementListSaturday, '6')
       response == true ? responseGeneral = true : responseGeneral = false;
     }
-    else if (this.incrementListSunday.length > 0) {
+    else if (this.incrementListSunday.length >= 0) {
       let response = await this.executeActivityDay(this.incrementListSunday, '0')
       response == true ? responseGeneral = true : responseGeneral = false;
 
     }
 
-    //exibir modal
 
 
   }
