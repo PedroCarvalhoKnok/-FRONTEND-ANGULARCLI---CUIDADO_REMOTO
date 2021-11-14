@@ -1,5 +1,5 @@
 export class User {
-    userId!: string;
+    _id!: string;
     name!: string;
     password!: string;
     email!: string;
@@ -7,4 +7,5 @@ export class User {
     birthDate!: string;
     role!: string;
     token!: string;
+    client!: string
   }

@@ -28,46 +28,23 @@ export class ScheduleListComponent implements OnInit {
   async ngOnInit() {
     //this.appComponent.profileVisible = true;
 
-     let userId = localStorage.getItem('idUser');
+     let customerId = localStorage.getItem('idCustomer');
 
      let token = localStorage.getItem('hashToken');
 
      console.log(token);
-     console.log(userId);
+     console.log(customerId);
 
-     userId = '618ef4890e2b2925e056154f';
-
-     if (userId != null && token != null) {
+     if (customerId != null && token != null) {
        //this.dataSource = await this.scheduleApiService.getById(userId, token);
-       let listSchedule = await this.scheduleApiService.getById(userId, token);
-       this.dataSource = [listSchedule];
+       let listSchedule = await this.scheduleApiService.getById(customerId, token);
+       this.dataSource = listSchedule;
      }
 
 
   }
 
-  async delete(id: string) {
-
-    try {
-
-      let userId = localStorage.getItem('userId');
-
-      let token = localStorage.getItem('hashToken');
-
-      if (token != null && userId != null) {
-
-        await this.scheduleApiService.delete(id, token);
-        this.dataSource = await this.scheduleApiService.getById(userId, token);
-      }
-
-
-    } catch {
-
-    };
-
-
-  }
-
+  
   async DeleteSchedule(schedule: any){
 
     let token = localStorage.getItem('hashToken');

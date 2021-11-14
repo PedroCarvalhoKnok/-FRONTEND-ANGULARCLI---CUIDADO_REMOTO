@@ -31,7 +31,7 @@ export class ScheduleApiService {
             'Authorization': `Bearer ${token}`
         })
 
-        return this.http.get<Schedule[]>(this.baseUrl + '/' + id,{headers: headers}).toPromise().then(function(resp){
+        return this.http.get<Schedule[]>(this.baseUrl + '/idUser/' + id,{headers: headers}).toPromise().then(function(resp){
             return resp;
         }, function(err) {
             return err;
@@ -46,7 +46,7 @@ export class ScheduleApiService {
             'Authorization': `Bearer ${token}`
         })
 
-         this.http.post<Schedule>(this.baseUrl, {"scheduleName": schedule.category,"diaSemana": schedule.dayOfWeek, "detalhes": schedule.details, "agendamento": schedule.time, "userId": schedule.userId},{headers: headers}).toPromise().then(function(resp){
+         this.http.post<Schedule>(this.baseUrl, {"scheduleName": schedule.category,"diaSemana": schedule.dayOfWeek, "detalhes": schedule.details, "agendamento": schedule.time, "idUser": schedule.userId},{headers: headers}).toPromise().then(function(resp){
             return resp;
         }, function(err) {
             return err;

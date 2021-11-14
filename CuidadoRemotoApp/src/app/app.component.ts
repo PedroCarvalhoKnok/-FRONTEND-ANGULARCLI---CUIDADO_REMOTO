@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
 
     localStorage.setItem('Edicao','E');
 
-    this.router.navigate(['/cadastrar']);
+    this.router.navigate(['/registrar']);
   }
 }
 

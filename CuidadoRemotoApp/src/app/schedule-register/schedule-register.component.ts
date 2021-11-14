@@ -202,7 +202,7 @@ export class ScheduleRegisterComponent implements OnInit {
 
       time != null ? schedule.time = `${time}` : '';
 
-      let userId = localStorage.getItem('idUser');
+      let userId = localStorage.getItem('idCustomer');
 
       userId != undefined ? schedule.userId = userId: schedule.userId = '';
 

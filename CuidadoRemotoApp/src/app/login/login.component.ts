@@ -31,17 +31,21 @@ export class LoginComponent implements OnInit {
     user.email = this.email;
     user.password = this.password;
 
+    let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTg5YTk0MjUwODcyZDY1OThjMTllNmMiLCJpYXQiOjE2MzY4NDY2NDl9.MyNE-fm-Z8IdBgliaulu0eO1nmgrSh8QnXk99BfC1VE';
+
     this.setForm(user.email, user.password);
 
-    let userAuth = await this.userApiService.authenticate(user);
+    let userAuth: any = await this.userApiService.authenticate(user, token);
 
     console.log(userAuth);
 
     if(userAuth != null || userAuth != undefined){
 
-      localStorage.setItem('hashToken', userAuth.token);
+      localStorage.setItem('hashToken', token);
 
-      localStorage.setItem('idUser', userAuth.userId);
+      localStorage.setItem('idCustomer', userAuth[1]._id);
+
+      localStorage.setItem('userName', userAuth[1].client);
 
     //  this.storeService.profileVisible = true;
 
@@ -60,6 +64,12 @@ export class LoginComponent implements OnInit {
       this.passwordValid = true;
 
     
+  }
+
+  goRegisterPage(){
+
+    this.router.navigate(['/registrar']);
+
   }
 
 }
