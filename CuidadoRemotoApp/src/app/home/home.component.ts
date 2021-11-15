@@ -16,6 +16,13 @@ export class HomeComponent implements OnInit {
     this.storeService.profileVisible = true;
     this.storeService.isMenuOpen = true;
 
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
+
 
     
   }

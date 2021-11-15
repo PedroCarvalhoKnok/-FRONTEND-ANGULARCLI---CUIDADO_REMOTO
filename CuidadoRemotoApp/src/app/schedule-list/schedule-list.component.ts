@@ -1,8 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AppComponent } from '../app.component';
-import { Schedule } from '../models/Schedule';
 import { ScheduleApiService } from '../services/schedule-api-service';
+import data from "../apiconfig.json";
 
 interface DaysOfWeek {
   value: string;
@@ -21,35 +20,48 @@ export class ScheduleListComponent implements OnInit {
   dataSource: any[] = [/*{dayOfWeek : 'Segunda-Feira', category: 'exercicio', details: '3x15', time: '17:09'},
 {dayOfWeek : 'Terça-Feira', category: 'medicamentos', details: '40mg', time: '17:00'}*/];
 
-  displayedColumns: string[] = ['diaSemana','scheduleName', 'detalhes', 'agendamento', 'acoes'];
+  displayedColumns: string[] = ['diaSemana', 'scheduleName', 'detalhes', 'agendamento', 'acoes'];
 
-  constructor(private scheduleApiService: ScheduleApiService,private matDialogue: MatDialog) { }
+  constructor(private scheduleApiService: ScheduleApiService, private matDialogue: MatDialog) { }
 
   async ngOnInit() {
-    //this.appComponent.profileVisible = true;
 
-     let customerId = localStorage.getItem('idCustomer');
+    let customerId = sessionStorage.getItem('idCustomer');
 
-     let token = localStorage.getItem('hashToken');
+    let token = `${(<any>data).token}`;
 
-     console.log(token);
-     console.log(customerId);
+    console.log(token);
+    console.log(customerId);
 
-     if (customerId != null && token != null) {
-       //this.dataSource = await this.scheduleApiService.getById(userId, token);
-       let listSchedule = await this.scheduleApiService.getById(customerId, token);
-       this.dataSource = listSchedule;
-     }
+    if (customerId != null || customerId != undefined && token != undefined) {
+      //this.dataSource = await this.scheduleApiService.getById(userId, token);
+      let listSchedule = await this.scheduleApiService.getById(customerId, token);
+      this.dataSource = listSchedule;
+    }
 
 
   }
 
-  
-  async DeleteSchedule(schedule: any){
+  openDelete(schedule: any) {
 
-    let token = localStorage.getItem('hashToken');
+    console.log(schedule);
 
-    token != null || token != undefined ? token = token: token = '';
+    this.matDialogue.open(DialogRemoveSchedule, {
+      data: {
+        '_id': schedule._id
+      },
+    });
+
+
+
+  }
+
+
+  async DeleteSchedule(schedule: any) {
+
+    let token = `${(<any>data).token}`;
+
+    token != null || token != undefined ? token = token : token = '';
 
     await this.scheduleApiService.delete(schedule._id, token);
 
@@ -57,7 +69,7 @@ export class ScheduleListComponent implements OnInit {
 
   }
 
-  open(schedule: any): void{
+  open(schedule: any): void {
 
     console.log(schedule);
 
@@ -86,16 +98,17 @@ export class DialogSucessEditSchedule { }
 })
 export class DialogSucessDeleteSchedule { }
 
+
 @Component({
-  selector: 'edit-Schedule-dialog',
-  templateUrl: '../dialogs/editSchedule.html',
+  selector: 'remove-Schedule-dialog',
+  templateUrl: '../dialogs/removeSchedule.html',
 })
-export class DialogEditSchedule { 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,public scheduleApiService: ScheduleApiService, public sucessEditDialog: MatDialog) {}
+export class DialogRemoveSchedule {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public scheduleApiService: ScheduleApiService, public sucessRemoveDialog: MatDialog) { }
 
-  Validator(schedule: any): boolean{
+  Validator(schedule: any): boolean {
 
-    if(schedule.diaSemana == undefined ||schedule.scheduleName == undefined || schedule.detalhes == undefined || schedule.agendamento == undefined){
+    if (schedule.diaSemana == undefined || schedule.scheduleName == undefined || schedule.detalhes == undefined || schedule.agendamento == undefined) {
 
       return false;
     }
@@ -105,9 +118,67 @@ export class DialogEditSchedule {
 
   }
 
-  async EditSchedule(schedule: any){
-    
-   // schedule.diaSemana = (<HTMLInputElement>document.getElementById(`dia-semana`)).value;
+  async EditSchedule(schedule: any) {
+
+    // schedule.diaSemana = (<HTMLInputElement>document.getElementById(`dia-semana`)).value;
+    schedule.scheduleName = (<HTMLInputElement>document.getElementById(`schedule-name`)).value;
+    schedule.detalhes = (<HTMLInputElement>document.getElementById(`detalhes`)).value;
+    schedule.agendamento = (<HTMLInputElement>document.getElementById(`horario`)).value;
+    schedule.diaSemana = (<HTMLInputElement>document.getElementById(`dia`)).value;
+
+
+    let token = `${(<any>data).token}`;
+
+    if (!this.Validator(schedule)) {
+      return;
+    }
+
+    token != null || token != undefined ? token = token : token = '';
+
+    let resp = await this.scheduleApiService.put(schedule, token);
+
+    this.sucessRemoveDialog.open(DialogSucessEditSchedule)
+
+
+  }
+
+  async DeleteSchedule(schedule: any) {
+
+    let token = `${(<any>data).token}`;
+
+    token != null || token != undefined ? token = token : token = '';
+
+    await this.scheduleApiService.delete(schedule._id, token);
+
+    this.sucessRemoveDialog.open(DialogSucessDeleteSchedule);
+
+  }
+
+
+}
+
+@Component({
+  selector: 'edit-Schedule-dialog',
+  templateUrl: '../dialogs/editSchedule.html',
+})
+export class DialogEditSchedule {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public scheduleApiService: ScheduleApiService, public sucessEditDialog: MatDialog) { }
+
+  Validator(schedule: any): boolean {
+
+    if (schedule.diaSemana == undefined || schedule.scheduleName == undefined || schedule.detalhes == undefined || schedule.agendamento == undefined) {
+
+      return false;
+    }
+
+    return true;
+
+
+  }
+
+  async EditSchedule(schedule: any) {
+
+    // schedule.diaSemana = (<HTMLInputElement>document.getElementById(`dia-semana`)).value;
     schedule.scheduleName = (<HTMLInputElement>document.getElementById(`schedule-name`)).value;
     schedule.detalhes = (<HTMLInputElement>document.getElementById(`detalhes`)).value;
     schedule.agendamento = (<HTMLInputElement>document.getElementById(`horario`)).value;
@@ -115,13 +186,13 @@ export class DialogEditSchedule {
 
     console.log(schedule);
 
-    let token = localStorage.getItem('hashToken');
+    let token = `${(<any>data).token}`;
 
-    if(!this.Validator(schedule)){
+    if (!this.Validator(schedule)) {
       return;
     }
 
-    token != null || token != undefined ? token = token: token = '';
+    token != null || token != undefined ? token = token : token = '';
 
     let resp = await this.scheduleApiService.put(schedule, token);
 

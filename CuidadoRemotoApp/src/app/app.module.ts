@@ -26,6 +26,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {LayoutModule} from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import {MatTableModule} from '@angular/material/table';
     MatDividerModule,
     LayoutModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    NgxMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]

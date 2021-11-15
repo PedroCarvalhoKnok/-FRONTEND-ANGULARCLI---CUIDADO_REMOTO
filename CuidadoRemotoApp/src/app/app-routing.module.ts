@@ -24,7 +24,7 @@ const routes: Routes = [
     component: ScheduleRegisterComponent
   },
   {
-    path: 'listar',
+    path: 'agendamento/listar',
     component: ScheduleListComponent
   },
   {

@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../models/User';
 import { StoreService } from '../services/store.service';
+import { MatDialog } from '@angular/material/dialog';
+import data from "../apiconfig.json";
 
 @Component({
   selector: 'app-login',
@@ -18,58 +20,68 @@ export class LoginComponent implements OnInit {
   emailValid: Boolean = false;
   passwordValid: Boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private userApiService: UserApiService, private router: Router,private storeService: StoreService) { }
+  constructor(private formBuilder: FormBuilder, private userApiService: UserApiService, private router: Router, private storeService: StoreService,private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.storeService.profileVisible = false;
+
+    console.log(sessionStorage);
+
+    sessionStorage.clear();
+
+    console.log(`${(<any>data).token}`);
   }
 
-  async authenticateUser(){
+  async authenticateUser() {
 
     let user = new User();
 
     user.email = this.email;
     user.password = this.password;
 
-    let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTg5YTk0MjUwODcyZDY1OThjMTllNmMiLCJpYXQiOjE2MzY4NDY2NDl9.MyNE-fm-Z8IdBgliaulu0eO1nmgrSh8QnXk99BfC1VE';
+    let token = `${(<any>data).token}`;
 
     this.setForm(user.email, user.password);
 
-    let userAuth: any = await this.userApiService.authenticate(user, token);
+    try {
 
-    console.log(userAuth);
+      let userAuth: any = await this.userApiService.authenticate(user, token);
 
-    if(userAuth != null || userAuth != undefined){
 
-      localStorage.setItem('hashToken', token);
+      sessionStorage.setItem('idCustomer', userAuth[0]._id);
 
-      localStorage.setItem('idCustomer', userAuth[1]._id);
-
-      localStorage.setItem('userName', userAuth[1].client);
-
-    //  this.storeService.profileVisible = true;
+      sessionStorage.setItem('userName', userAuth[0].client);
 
       this.router.navigate(['/inicio']);
+    } catch (error) {
 
+      this.matDialog.open(DialogErrorLogin);
+      return;
     }
 
   }
 
   private setForm(name: string, password: string): void {
 
-    if(name == '')
+    if (name == '')
       this.emailValid = true;
 
-    if(password == '')
+    if (password == '')
       this.passwordValid = true;
 
-    
+
   }
 
-  goRegisterPage(){
+  goRegisterPage() {
 
     this.router.navigate(['/registrar']);
 
   }
 
 }
+
+@Component({
+  selector: 'dialog-elements-example-dialog',
+  templateUrl: '../dialogs/loginError.html',
+})
+export class DialogErrorLogin { }

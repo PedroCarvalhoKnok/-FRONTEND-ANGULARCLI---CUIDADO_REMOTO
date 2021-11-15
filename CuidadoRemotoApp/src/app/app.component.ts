@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   profileVisible: boolean = false;
   isMenuOpen: boolean = false;
   opened: boolean = false;
+  usuarioLogado: any = '';
 
   // ngAfterViewInit() {
   //   this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     this.profileVisible = this.storeService.profileVisible;
     this.isMenuOpen = this.storeService.isMenuOpen;
+    this.usuarioLogado = sessionStorage.getItem('userName');
   }
 
   clickhandler(){
@@ -43,9 +45,13 @@ export class AppComponent implements OnInit {
 
   editProfile(){
 
-    localStorage.setItem('Edicao','E');
+    sessionStorage.setItem('Edicao','E');
 
     this.router.navigate(['/registrar']);
+  }
+
+  logOut(){
+    
   }
 }
 

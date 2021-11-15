@@ -17,22 +17,25 @@
           </mat-form-field>
   
           <mat-form-field class="example-full-width">
-            <input matInput id="email-input" name="email-input" placeholder="Email" [(ngModel)]="user.email">
+            <input matInput type="email" id="email-input" name="email-input" placeholder="Email (**@**.com)" [(ngModel)]="user.email">
             <div class="invalid-feedback" *ngIf="emailValid">
               Campo email é necessario
             </div>
-          </mat-form-field>
-
-          <mat-form-field class="example-full-width">
-            <input matInput id="phone-input" name="phone-input" placeholder="Telefone" [(ngModel)]="user.phone" mask="(00)0 0000-0000 || 0 00000000">
-            <div *ngIf="phoneValid">
-              <p *ngIf="this.formGroup.controls.phone.errors?.required">Campo telefone é necessario</p>
-              <p *ngIf="this.formGroup.controls.phone.errors?.minlength">Campo telefone deve ter entre 10 e 11 caracteres</p>
+            <div class="invalid-feedback" *ngIf="emailFormat">
+              Campo email não está num formato válido
             </div>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-            <input matInput id="birth-input" name="birth-input" placeholder="Data de Nascimento" [(ngModel)]="user.birthDate">
+            <input matInput type="tel" id="phone-input" name="phone-input" placeholder="Telefone" [(ngModel)]="user.phone">
+            <div class="invalid-feedback" *ngIf="phoneValid">
+              <p>Campo telefone é necessario</p>
+              <p>Campo telefone deve ter entre 10 e 11 caracteres</p>
+            </div>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput type="datetime-local" id="birth-input" name="birth-input" placeholder="Data de Nascimento" [(ngModel)]="user.birthDate">
           </mat-form-field>
           <div *ngIf="birthValid">
             Data de nascimento é necessario

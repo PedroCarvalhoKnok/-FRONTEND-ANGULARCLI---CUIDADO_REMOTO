@@ -1,3 +1,4 @@
 {
-    "urlBaseApi": "http://localhost:9091"
+    "urlBaseApi": "http://localhost:9091",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTg5YTk0MjUwODcyZDY1OThjMTllNmMiLCJpYXQiOjE2MzY4NDY2NDl9.MyNE-fm-Z8IdBgliaulu0eO1nmgrSh8QnXk99BfC1VE"
 }

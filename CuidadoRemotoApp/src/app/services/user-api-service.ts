@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { User } from "../models/User";
-//import config from "../apiconfig.json";
+import data from "../apiconfig.json";
 @Injectable({ providedIn: 'root'})
 
 export class UserApiService {
+    
 
-     baseUrl: string = `http://localhost:9091/api/customer`;
+     baseUrl: string = `${(<any>data).urlBaseApi}/api/customer`;
 
     // baseUserUrl: string = `http://localhost:9091/api/users`;
 
@@ -90,6 +91,8 @@ export class UserApiService {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         })
+
+        console.log(this.baseUrl);
 
         return this.http.post<User>(this.baseUrl + '/authenticate',{"client": user.email, "password": user.password},{headers: headers}).toPromise();
             

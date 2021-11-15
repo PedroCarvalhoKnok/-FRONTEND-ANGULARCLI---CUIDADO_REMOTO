@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserApiService } from '../services/user-api-service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import data from "../apiconfig.json";
 
 interface UserRole {
   value: string;
@@ -25,27 +26,28 @@ export class LoginRegisterComponent implements OnInit {
   nameValid: Boolean = false;
   passwordValid: Boolean = false;
   emailValid: Boolean = false;
+  emailFormat: Boolean = false;
   phoneValid: Boolean = false;
   birthValid: Boolean = false;
   roleValid: Boolean = false;
 
-  UserRole: UserRole[] = [{ value: 'resp', viewValue: 'Responsável' }, { value: 'idoso', viewValue: 'Idoso(a)' }, { value: 'saude', viewValue: 'Prof. Saúde' }];
+  UserRole: UserRole[] = [{ value: 'Responsável', viewValue: 'Responsável' }, { value: 'Idoso(a)', viewValue: 'Idoso(a)' }, { value: 'Prof. Saúde', viewValue: 'Prof. Saúde' }];
 
   constructor(private formBuilder: FormBuilder, private userApiService: UserApiService, private router: Router, public dialog: MatDialog) { }
 
   async ngOnInit() {
 
-    let edit = localStorage.getItem('Edicao');
+    let edit = sessionStorage.getItem('Edicao');
 
     console.log(edit);
-    
+
     if (edit == 'E') {
 
-      let customerId = localStorage.getItem('idCustomer');
+      let customerId = sessionStorage.getItem('idCustomer');
 
-      let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTg5YTk0MjUwODcyZDY1OThjMTllNmMiLCJpYXQiOjE2MzY4NDY2NDl9.MyNE-fm-Z8IdBgliaulu0eO1nmgrSh8QnXk99BfC1VE';
+      let token = `${(<any>data).token}`;
 
-      customerId = '619051e24f915c8dd0b855f5';
+      //customerId = '619051e24f915c8dd0b855f5';
 
       if (customerId != null || customerId != undefined) {
 
@@ -81,7 +83,7 @@ export class LoginRegisterComponent implements OnInit {
     if (!this.setForm())
       return;
 
-    let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTg5YTk0MjUwODcyZDY1OThjMTllNmMiLCJpYXQiOjE2MzY4NDY2NDl9.MyNE-fm-Z8IdBgliaulu0eO1nmgrSh8QnXk99BfC1VE';
+    let token = `${(<any>data).token}`;
 
     let userRegistered = await this.userApiService.post(this.user, token);
 
@@ -96,54 +98,74 @@ export class LoginRegisterComponent implements OnInit {
     if (!this.setForm())
       return;
 
-    let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTg5YTk0MjUwODcyZDY1OThjMTllNmMiLCJpYXQiOjE2MzY4NDY2NDl9.MyNE-fm-Z8IdBgliaulu0eO1nmgrSh8QnXk99BfC1VE';
+    let token = `${(<any>data).token}`;
 
-    this.user._id = '619051e24f915c8dd0b855f5';
+    //this.user._id = '619051e24f915c8dd0b855f5';
 
-    let userRegistered = await this.userApiService.put(this.user, token);
+    try {
 
-    if (userRegistered != undefined || userRegistered != null)
+      await this.userApiService.put(this.user, token);
+
       this.openDialogEdit();
+
+    } catch (error) {
+
+      this.dialog.open(DialogErrorRegisterUser);
+      return;
+    }
 
 
   }
 
   private setForm(): Boolean {
 
+    let retorno = true;
+
     if (this.user.name == '' || this.user.name == null || this.user.name == undefined) {
       this.nameValid = true;
-      return false;
+      retorno = false;
     }
 
     if (this.user.email == '' || this.user.email == null || this.user.email == undefined) {
       this.emailValid = true;
-      return false;
+      retorno = false;
     }
 
-    if (this.user.phone == '' && this.user.phone.length == 10 || this.user.phone.length == 11) {
+    if (!this.user.email.includes('@') && !this.user.email.includes('.com')) {
+      this.emailFormat = true;
+      retorno = false;
+    }
+
+    if (this.user.phone == '' && this.user.phone.length < 9) {
       this.phoneValid = true;
-      return false;
+      retorno = false;
     }
     if (this.user.role == '' || this.user.role == null || this.user.role == undefined) {
       this.roleValid = true;
-      return false;
+      retorno = false;
     }
 
     if (this.user.password == '' || this.user.password == null || this.user.password == undefined) {
       this.passwordValid = true;
-      return false;
+      retorno = false;
     }
 
     if (this.user.birthDate == '' || this.user.birthDate == null || this.user.birthDate == undefined) {
       this.birthValid = true;
-      return false;
+      retorno = false;
     }
 
-    return true;
+    return retorno;
 
   }
 
 }
+
+@Component({
+  selector: 'dialog-elements-example-dialog',
+  templateUrl: '../dialogs/errorRegisterUser.html',
+})
+export class DialogErrorRegisterUser { }
 
 @Component({
   selector: 'dialog-elements-example-dialog',

@@ -81,6 +81,10 @@ body {
 	width: 100%;
 }
 
+.btn-block{
+	margin-top: 25%;
+}
+
 .main-wrapper mat-card-header {
 	text-align: center;
 	width: 100%;
@@ -112,6 +116,15 @@ body {
 }
 
 .buttons-cad{
-	margin-left: 210px;
 	width: 100%;
+	padding-top: 10%;
+}
+
+.mat-stroked-button{
+	background-color: #8622d8;
+}
+
+.button-add{
+	padding-left: 275px;
+	padding-top: 10%;
 }

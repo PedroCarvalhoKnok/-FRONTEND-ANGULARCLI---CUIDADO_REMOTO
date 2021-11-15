@@ -3,10 +3,10 @@
     <button *ngIf="storeService.profileVisible" (click)="clickhandler()">
       <mat-icon>menu</mat-icon>
     </button>
-  <a href="#" target="_blank" class="positronx">Cuidado Remoto</a>
+  <a routerLink="/inicio" class="positronx">Cuidado Remoto</a>
   </div>
   <span class="nav-tool-items">
-    <a mat-button *ngIf="storeService.profileVisible" mat-raised-button routerLink="login" routerLinkActive="active">LogOut</a>
+    <button mat-button *ngIf="storeService.profileVisible" mat-raised-button routerLink="login" routerLinkActive="active">LogOut</button>
   </span>
 </mat-toolbar>
 <mat-sidenav-container class="example-container">
@@ -16,7 +16,7 @@
       <mat-icon class="avatar">account_circle</mat-icon>
     </a>
     <p class="name">Bem Vindo(a)</p>
-    <h4 class="name">Usuário Logado</h4>
+    <h4 class="name">{{this.usuarioLogado}}</h4>
     <button (click)="editProfile()" mat-button routerLink="home" class="menu-button">
       Editar Perfil
     </button>
