@@ -5,6 +5,7 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
 import { ScheduleRegisterComponent } from './schedule-register/schedule-register.component';
 import { ScheduleListComponent } from './schedule-list/schedule-list.component';
 import { HomeComponent } from './home/home.component';
+import { HeartMonitorComponent } from './heart-monitor/heart-monitor.component';
 
 const routes: Routes = [
   { path: '', 
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'inicio',
     component: HomeComponent
+  },
+  {
+    path: 'batimentos',
+    component: HeartMonitorComponent
   }
 ];
 

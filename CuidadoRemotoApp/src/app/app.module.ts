@@ -27,6 +27,7 @@ import {LayoutModule} from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import { NgxMaskModule } from 'ngx-mask';
+import { HeartMonitorComponent } from './heart-monitor/heart-monitor.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { NgxMaskModule } from 'ngx-mask';
     LoginRegisterComponent,
     ScheduleRegisterComponent,
     ScheduleListComponent,
+    HeartMonitorComponent,
   ],
   imports: [
     BrowserModule,
