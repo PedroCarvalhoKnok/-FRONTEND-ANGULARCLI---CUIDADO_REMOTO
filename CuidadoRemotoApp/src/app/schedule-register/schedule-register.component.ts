@@ -62,6 +62,7 @@ export class ScheduleRegisterComponent implements OnInit {
   ngOnInit(): void {
     this.storeService.profileVisible = true;
     //this.setForm();
+    console.log('teste');
   }
 
   addActivity(value: string) {

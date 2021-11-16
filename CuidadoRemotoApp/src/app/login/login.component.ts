@@ -52,6 +52,8 @@ export class LoginComponent implements OnInit {
 
       sessionStorage.setItem('userName', userAuth[0].client);
 
+      console.log(sessionStorage);
+
       this.router.navigate(['/inicio']);
     } catch (error) {
 

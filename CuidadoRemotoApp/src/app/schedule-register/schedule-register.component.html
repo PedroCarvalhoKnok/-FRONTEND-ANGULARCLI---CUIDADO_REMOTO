@@ -39,7 +39,7 @@
 
             <h4>Categoria da Atividade</h4>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Categoria" id="input-cat-01" [(ngModel)]="schedule.category">
+                <input matInput placeholder="Categoria" id="input-cat-01" required>
             </mat-form-field>
             <div class="invalid-feedback" *ngIf="errorCategory">
                 Categoria é necessaria
@@ -47,7 +47,7 @@
 
             <h4>Detalhes da Atividade</h4>
             <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="Detalhes" id="input-det-01" [(ngModel)]="schedule.details">
+                <textarea matInput placeholder="Detalhes" id="input-det-01" required>
                 </textarea>
             </mat-form-field>
             <div class="invalid-feedback" *ngIf="errorDetail">
@@ -57,7 +57,7 @@
             <h4>Selecione um horário</h4>
             <input matInput mdc-datetime-picker="" date="HH:mm" time="true" placeholder="Horário" minutes="true"
                 min-date="minDate" type="datetime-local" id="input-time-01" format="HH:mm" short-time="false"
-                ng-model="timeutc" class="md-input" [(ngModel)]="schedule.time">
+                ng-model="timeutc" class="md-input" required>
             <div class="invalid-feedback" *ngIf="errorTime">
                 Horário é necessarios
             </div>
@@ -95,7 +95,7 @@
 
             <h4>Categoria da Atividade</h4>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Categoria" id="input-cat-02" [(ngModel)]="schedule.category">
+                <input matInput placeholder="Categoria" id="input-cat-02" required>
             </mat-form-field>
             <div class="invalid-feedback" *ngIf="errorCategory">
                 Categoria é necessaria
@@ -103,7 +103,7 @@
 
             <h4>Detalhes da Atividade</h4>
             <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="Detalhes" id="input-det-02" [(ngModel)]="schedule.details">
+                <textarea matInput placeholder="Detalhes" id="input-det-02" required>
                 </textarea>
             </mat-form-field>
             <div class="invalid-feedback" *ngIf="errorDetail">
@@ -113,7 +113,7 @@
             <h4>Selecione um horário</h4>
             <input matInput mdc-datetime-picker="" date="HH:mm" time="true" placeholder="Horário" minutes="true"
                 min-date="minDate" type="datetime-local" id="input-time-02" format="HH:mm" short-time="false"
-                ng-model="timeutc" class=" md-input" [(ngModel)]="schedule.time">
+                ng-model="timeutc" class=" md-input" [(ngModel)]="schedule.time" required>
             <div class="invalid-feedback" *ngIf="errorTime">
                 Horário é necessario
             </div>
@@ -152,7 +152,7 @@
 
             <h4>Categoria da Atividade</h4>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Categoria" id="input-cat-03" [(ngModel)]="schedule.category">
+                <input matInput placeholder="Categoria" id="input-cat-03" required>
             </mat-form-field>
             <div class="invalid-feedback" *ngIf="errorCategory">
                 Categoria é necessaria
@@ -160,7 +160,7 @@
 
             <h4>Detalhes da Atividade</h4>
             <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="Detalhes" id="input-det-03" [(ngModel)]="schedule.details">
+                <textarea matInput placeholder="Detalhes" id="input-det-03" required>
                 </textarea>
             </mat-form-field>
             <div class="invalid-feedback" *ngIf="errorDetail">
@@ -170,7 +170,7 @@
             <h4>Selecione um horário</h4>
             <input mdc-datetime-picker="" date="HH:mm" time="true" placeholder="Horário" minutes="true"
                 min-date="minDate" type="datetime-local" id="input-time-03" format="HH:mm" short-time="false"
-                ng-model="timeutc" class=" md-input" [(ngModel)]="schedule.time">
+                ng-model="timeutc" class=" md-input" [(ngModel)]="schedule.time" required>
             <div class="invalid-feedback" *ngIf="errorTime">
                 Horário é necessario
             </div>
@@ -209,7 +209,7 @@
 
             <h4>Categoria da Atividade</h4>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Categoria" id="input-cat-04" [(ngModel)]="schedule.category">
+                <input matInput placeholder="Categoria" id="input-cat-04" required>
             </mat-form-field>
             <div class="invalid-feedback" *ngIf="errorCategory">
                 Categoria é necessaria
@@ -217,7 +217,7 @@
 
             <h4>Detalhes da Atividade</h4>
             <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="Detalhes" id="input-det-04" [(ngModel)]="schedule.details" required>
+                <textarea matInput placeholder="Detalhes" id="input-det-04" required>
                 </textarea>
             </mat-form-field>
             <div class="invalid-feedback" *ngIf="errorDetail">
@@ -227,7 +227,7 @@
             <h4>Selecione um horário</h4>
             <input matInput mdc-datetime-picker="" date="false" time="true" placeholder="Horário" minutes="true"
                 min-date="minDate" type="datetime-local" id="input-time-04" format="HH:mm" short-time="false"
-                ng-model="timeutc" class=" md-input" [(ngModel)]="schedule.time">
+                ng-model="timeutc" class=" md-input" required>
             <div class="invalid-feedback" *ngIf="errorTime">
                 Horário é necessarios
             </div>
@@ -265,7 +265,7 @@
 
             <h4>Categoria da Atividade</h4>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Categoria" id="input-cat-05" [(ngModel)]="schedule.category">
+                <input matInput placeholder="Categoria" id="input-cat-05" required>
             </mat-form-field>
             <div class="invalid-feedback" *ngIf="errorCategory">
                 Categoria é necessaria
@@ -274,7 +274,7 @@
 
             <h4>Detalhes da Atividade</h4>
             <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="Detalhes" id="input-det-05" [(ngModel)]="schedule.details">
+                <textarea matInput placeholder="Detalhes" id="input-det-05" required>
                 </textarea>
             </mat-form-field>
             <div class="invalid-feedback" *ngIf="errorDetail">
@@ -284,7 +284,7 @@
             <h4>Selecione um horário</h4>
             <input matInput mdc-datetime-picker="" date="false" time="true" placeholder="Horário" minutes="true"
                 min-date="minDate" type="datetime-local" id="input-time-05" format="HH:mm" short-time="false"
-                ng-model="timeutc" class=" md-input" [(ngModel)]="schedule.time">
+                ng-model="timeutc" class=" md-input" required>
             <div class="invalid-feedback" *ngIf="errorTime">
                 Horário é necessario
             </div>
@@ -322,7 +322,7 @@
 
             <h4>Categoria da Atividade</h4>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Categoria" id="input-cat-06" [(ngModel)]="schedule.category">
+                <input matInput placeholder="Categoria" id="input-cat-06" required>
             </mat-form-field>
             <div class="invalid-feedback" *ngIf="errorCategory">
                 Categoria é necessaria
@@ -330,7 +330,7 @@
 
             <h4>Detalhes da Atividade</h4>
             <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="Detalhes" id="input-det-06" [(ngModel)]="schedule.details">
+                <textarea matInput placeholder="Detalhes" id="input-det-06" required>
                 </textarea>
             </mat-form-field>
             <div class="invalid-feedback" *ngIf="errorDetail">
@@ -340,7 +340,7 @@
             <h4>Selecione um horário</h4>
             <input mdc-datetime-picker="" date="false" time="true" placeholder="Horário" minutes="true"
                 min-date="minDate" type="datetime-local" id="input-time-06" format="HH:mm" short-time="false"
-                ng-model="timeutc" class=" md-input" [(ngModel)]="schedule.time">
+                ng-model="timeutc" class=" md-input" required>
             <div class="invalid-feedback" *ngIf="errorDetail">
                 Horário é necessario
             </div>
@@ -379,7 +379,7 @@
 
             <h4>Categoria da Atividade</h4>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Categoria" id="input-cat-00" [(ngModel)]="schedule.category">
+                <input matInput placeholder="Categoria" id="input-cat-00" required>
             </mat-form-field>
             <div class="invalid-feedback" *ngIf="errorCategory">
                 Categoria é necessaria
@@ -387,7 +387,7 @@
 
             <h4>Detalhes da Atividade</h4>
             <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="Detalhes" id="input-det-00" [(ngModel)]="schedule.details">
+                <textarea matInput placeholder="Detalhes" id="input-det-00" required>
                 </textarea>
             </mat-form-field>
             <div class="invalid-feedback" *ngIf="errorDetail">
@@ -397,7 +397,7 @@
             <h4>Selecione um horário</h4>
             <input matInput mdc-datetime-picker="" date="false" time="true" placeholder="Horário" minutes="true"
                 min-date="minDate" type="datetime-local" id="input-time-00" format="HH:mm" short-time="false"
-                ng-model="timeutc" class="md-input" [(ngModel)]="schedule.time">
+                ng-model="timeutc" class="md-input" required>
             <div class="invalid-feedback" *ngIf="errorTime">
                 Detalhes são necessarios
             </div>
@@ -420,7 +420,7 @@
                 </textarea>
                 </mat-form-field>
                 <mat-form-field>
-                    <input matInput id="input-time-{{increment}}5" mdc-datetime-picker="" date="false" time="true"
+                    <input matInput id="input-time-{{increment}}0" mdc-datetime-picker="" date="false" time="true"
                         placeholder="Horário" minutes="true" min-date="minDate" type="datetime-local" format="HH:mm"
                         short-time="false" ng-model="timeutc" class="md-input" required>
                 </mat-form-field>
