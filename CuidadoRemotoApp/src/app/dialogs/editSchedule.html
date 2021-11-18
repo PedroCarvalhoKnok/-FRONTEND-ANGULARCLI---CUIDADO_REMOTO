@@ -3,7 +3,15 @@
   <h4>Dados do Agendamento</h4>
   <div>
     <label mat-label>Dia da semana</label><br/>
-    <input id="dia" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" value="{{data.diaSemana}}">
+    <select id="dia" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" value="{{data.diaSemana}}">
+      <option value="Segunda-Feira"></option>
+      <option value="Terça-Feira"></option>
+      <option value="Quarta-Feira"></option>
+      <option value="Quinta-Feira"></option>
+      <option value="Sexta-Feira"></option>
+      <option value="Sábado"></option>
+      <option value="Domingo"></option>
+    </select>
   </div>
   <div>
     <label mat-label>Categoria</label><br/>
