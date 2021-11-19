@@ -6,6 +6,8 @@ import { ScheduleRegisterComponent } from './schedule-register/schedule-register
 import { ScheduleListComponent } from './schedule-list/schedule-list.component';
 import { HomeComponent } from './home/home.component';
 import { HeartMonitorComponent } from './heart-monitor/heart-monitor.component';
+import { GamesComponent } from './games/games.component';
+import { UrbanServicesComponent } from './urban-services/urban-services.component';
 
 const routes: Routes = [
   { path: '', 
@@ -35,6 +37,14 @@ const routes: Routes = [
   {
     path: 'batimentos',
     component: HeartMonitorComponent
+  },
+  {
+    path: 'jogos',
+    component: GamesComponent
+  },
+  {
+    path: 'servicos',
+    component: UrbanServicesComponent
   }
 ];
 

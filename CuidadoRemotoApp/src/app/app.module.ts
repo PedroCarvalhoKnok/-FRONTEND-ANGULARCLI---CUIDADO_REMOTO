@@ -28,6 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import { NgxMaskModule } from 'ngx-mask';
 import { HeartMonitorComponent } from './heart-monitor/heart-monitor.component';
+import { GamesComponent } from './games/games.component';
+import { UrbanServicesComponent } from './urban-services/urban-services.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { HeartMonitorComponent } from './heart-monitor/heart-monitor.component';
     ScheduleRegisterComponent,
     ScheduleListComponent,
     HeartMonitorComponent,
+    GamesComponent,
+    UrbanServicesComponent,
   ],
   imports: [
     BrowserModule,

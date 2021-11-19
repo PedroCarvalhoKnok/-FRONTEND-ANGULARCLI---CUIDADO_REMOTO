@@ -2,7 +2,7 @@
 
     <mat-card class="box">
 
-        <mat-card-header>
+        <mat-card-header style="padding-left: 40%;">
             <mat-card-title fxLayoutAlign="center center">
                 Frequência Cardíaca
             </mat-card-title>
@@ -15,11 +15,11 @@
             <div id="heart" style="align-items: center;">
                 <img class="bottom heart-pos" src="https://i.stack.imgur.com/iBCpb.png" width="100px">
                 <div class="inline" style="padding-top: 10px;">
-                    <div>
+                    <div style="padding-left: 2%; width: 25%;">
                         <mat-label>BPM em estado de repouso(atual)</mat-label><br />
                         <input style="border: 0; border-width: 0; box-shadow: none; text-align: center;" id="actual-heart" value="0 BPM">
                     </div>
-                    <div style="padding-left: 60%;">
+                    <div style="padding-left: 50%;">
                         <mat-label>Periodo de análise</mat-label><br />
                         <mat-select value="Atual">
                             <mat-option value="diario">Diário</mat-option>
@@ -28,16 +28,16 @@
                         </mat-select>
                     </div>
                 </div>
-                <div class="inline" style="padding-top: 20%">
-                    <div style="padding-left: 1%;">
+                <div class="inline" style="padding-top: 20%;">
+                    <div style="padding-left: 2%; width: 25%;">
                         <mat-label>Média no período</mat-label><br />
                         <input matInput style="border: 0; border-width: 0; box-shadow: none; text-align: center;" id="average-heart" value="0 BPM">
                     </div>
-                    <div style="padding-left: 30%;">
+                    <div style="padding-left: 17%; width: 20%;">
                         <mat-label>Maior no período</mat-label><br />
                         <input matInput style="border: 0; border-width: 0; box-shadow: none; text-align: center;" id="max-heart" value="0 BPM">
                     </div>
-                    <div style="padding-left: 20%;">
+                    <div style="padding-left: 15%; width: 20%;">
                         <mat-label>Menor no período</mat-label><br />
                         <input matInput style="border: 0; border-width: 0; box-shadow: none; text-align: center;" id="min-heart" value="0 BPM">
                     </div>
