@@ -3,7 +3,7 @@
     <button *ngIf="storeService.profileVisible" (click)="clickhandler()">
       <mat-icon>menu</mat-icon>
     </button>
-  <a routerLink="/inicio" class="positronx">Cuidado Remoto</a>
+  <a class="positronx">Cuidado Remoto</a>
   </div>
   <span class="nav-tool-items">
     <button mat-button *ngIf="storeService.profileVisible" mat-raised-button routerLink="login" routerLinkActive="active">LogOut</button>
@@ -19,6 +19,9 @@
     <h4 class="name">{{this.usuarioLogado}}</h4>
     <button (click)="editProfile()" mat-button routerLink="home" class="menu-button">
       Editar Perfil
+    </button>
+    <button mat-button routerLink="/inicio" class="menu-button">
+      Início
     </button>
     </div>
     <mat-divider></mat-divider>

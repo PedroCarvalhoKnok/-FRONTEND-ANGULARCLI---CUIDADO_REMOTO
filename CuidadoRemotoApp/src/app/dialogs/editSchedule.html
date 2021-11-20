@@ -2,15 +2,15 @@
 <div mat-dialog-content style="text-align: center;">
   <h4>Dados do Agendamento</h4>
   <div>
-    <label mat-label>Dia da semana</label><br/>
-    <select id="dia" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" value="{{data.diaSemana}}">
-      <option value="Segunda-Feira"></option>
-      <option value="Terça-Feira"></option>
-      <option value="Quarta-Feira"></option>
-      <option value="Quinta-Feira"></option>
-      <option value="Sexta-Feira"></option>
-      <option value="Sábado"></option>
-      <option value="Domingo"></option>
+    <label mat-label for="days">Dia da semana</label><br/>
+    <select id="dia" name="days" style="text-align: center;" value="{{data.diaSemana}}">
+      <option value="Segunda-Feira">Segunda-Feira</option>
+      <option value="Terça-Feira">Terça-Feira</option>
+      <option value="Quarta-Feira">Quarta-Feira</option>
+      <option value="Quinta-Feira">Quinta-Feira</option>
+      <option value="Sexta-Feira">Sexta-Feira</option>
+      <option value="Sábado">Sábado</option>
+      <option value="Domingo">Domingo</option>
     </select>
   </div>
   <div>

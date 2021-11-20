@@ -68,10 +68,22 @@ export class LoginRegisterComponent implements OnInit {
       }
     }
 
+    document.addEventListener('keypress', function (e) {
+      if (e.which == 13) {
+        document.getElementById('registerBtn')?.click();
+      }
+    }, false);
+
   }
 
   openDialog() {
-    this.dialog.open(DialogSucessRegisterUser);
+    let x = this.dialog.open(DialogSucessRegisterUser);
+
+    x.afterClosed().subscribe(result => {
+
+      this.router.navigate(['/login']);
+
+    });
   }
 
   openDialogEdit() {
@@ -85,10 +97,16 @@ export class LoginRegisterComponent implements OnInit {
 
     let token = `${(<any>data).token}`;
 
-    let userRegistered = await this.userApiService.post(this.user, token);
+    try {
 
-    if (userRegistered != undefined || userRegistered != null)
+      await this.userApiService.post(this.user, token);
+      
       this.openDialog();
+
+    } catch (error) {
+      this.dialog.open(DialogErrorRegisterUser);
+      return;
+    }
 
 
   }
@@ -131,26 +149,28 @@ export class LoginRegisterComponent implements OnInit {
       retorno = false;
     }
 
-    if (!this.user.email.includes('@') && !this.user.email.includes('.com')) {
-      this.emailFormat = true;
-      retorno = false;
+    if (this.user.email != undefined) {
+      if (!this.user.email.includes('@') || !this.user.email.includes('.com')) {
+        this.emailFormat = true;
+        retorno = false;
+      }
     }
 
-    if (this.user.phone == '' && this.user.phone.length < 9) {
+    if (this.user.phone == undefined || this.user.phone.length < 9) {
       this.phoneValid = true;
       retorno = false;
     }
-    if (this.user.role == '' || this.user.role == null || this.user.role == undefined) {
+    if (this.user.role == undefined) {
       this.roleValid = true;
       retorno = false;
     }
 
-    if (this.user.password == '' || this.user.password == null || this.user.password == undefined) {
+    if (this.user.password == undefined) {
       this.passwordValid = true;
       retorno = false;
     }
 
-    if (this.user.birthDate == '' || this.user.birthDate == null || this.user.birthDate == undefined) {
+    if (this.user.birthDate == undefined) {
       this.birthValid = true;
       retorno = false;
     }
