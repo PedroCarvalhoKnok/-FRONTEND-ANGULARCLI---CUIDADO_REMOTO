@@ -21,9 +21,10 @@
                     </div>
                     <div style="padding-left: 50%;">
                         <mat-label>Periodo de análise</mat-label><br />
-                        <mat-select value="Atual">
+                        <mat-select [(ngModel)]="Atual" placeholder="Atual">
+                            <mat-option value="atual">Atual</mat-option>
                             <mat-option value="diario">Diário</mat-option>
-                            <mat-option value="semanal" disabled>Semanal</mat-option>
+                            <mat-option value="semanal">Semanal</mat-option>
                             <mat-option value="mensal">Mensal</mat-option>
                         </mat-select>
                     </div>

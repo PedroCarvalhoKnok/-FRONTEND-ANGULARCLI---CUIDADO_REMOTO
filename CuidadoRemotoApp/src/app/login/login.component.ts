@@ -56,11 +56,9 @@ export class LoginComponent implements OnInit {
       let userAuth: any = await this.userApiService.authenticate(user, token);
 
 
-      sessionStorage.setItem('idCustomer', userAuth[1]._id);
+      sessionStorage.setItem('idCustomer', userAuth._id);
 
-      sessionStorage.setItem('userName', userAuth[1].client);
-
-      console.log(sessionStorage);
+      sessionStorage.setItem('userName', userAuth.client);
 
       this.router.navigate(['/inicio']);
 

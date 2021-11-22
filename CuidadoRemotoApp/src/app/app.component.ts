@@ -50,6 +50,10 @@ export class AppComponent implements OnInit {
     this.router.navigate(['/registrar']);
   }
 
+  goHome(){
+    this.router.navigate(['/inicio']);
+  }
+
   logOut(){
     
   }

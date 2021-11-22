@@ -65,6 +65,10 @@ export class LoginRegisterComponent implements OnInit {
 
         this.user.role = userSearched.role;
 
+        this.user._id = customerId;
+
+        (<HTMLInputElement>document.getElementById(`perfil-input`)).value = this.user.role;
+
       }
     }
 
@@ -77,9 +81,9 @@ export class LoginRegisterComponent implements OnInit {
   }
 
   openDialog() {
-    let x = this.dialog.open(DialogSucessRegisterUser);
+    let sucessDialog = this.dialog.open(DialogSucessRegisterUser);
 
-    x.afterClosed().subscribe(result => {
+    sucessDialog.afterClosed().subscribe(result => {
 
       this.router.navigate(['/login']);
 

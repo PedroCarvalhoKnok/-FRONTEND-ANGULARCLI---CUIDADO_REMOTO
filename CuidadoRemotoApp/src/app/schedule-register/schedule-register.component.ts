@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AppComponent } from '../app.component';
 import { StoreService } from '../services/store.service';
 import data from "../apiconfig.json";
+import { Router } from '@angular/router';
 
 
 interface DaysOfWeek {
@@ -55,7 +56,7 @@ export class ScheduleRegisterComponent implements OnInit {
 
   DaysOfWeek: DaysOfWeek[] = [{ value: '0', viewValue: 'Domingo' }, { value: '1', viewValue: 'Segunda-Feira' }, { value: '2', viewValue: 'Terça-Feira' }, { value: '3', viewValue: 'Quarta-Feira' }, { value: '4', viewValue: 'Quinta-Feira' }, { value: '5', viewValue: 'Sexta-Feira' }, { value: '6', viewValue: 'Sábado' }];
 
-  constructor(private formBuilder: FormBuilder, private scheduleApiService: ScheduleApiService, public dialog: MatDialog, private appComponent: AppComponent, private storeService: StoreService) {
+  constructor(private formBuilder: FormBuilder, private scheduleApiService: ScheduleApiService, public dialog: MatDialog, private appComponent: AppComponent, private storeService: StoreService, private router: Router) {
 
   }
 
@@ -282,8 +283,10 @@ export class ScheduleRegisterComponent implements OnInit {
     this.incrementListSaturday = [];
     this.incrementListSunday = [];
 
-    if (this.setForm(schedule))
+    if (this.setForm(schedule)){
       this.openDialog();
+      
+    }
 
   }
 
@@ -412,8 +415,14 @@ export class ScheduleRegisterComponent implements OnInit {
 
   }
 
-  openDialog() {
-    this.dialog.open(DialogSucessRegisterSchedule);
+  openDialog(){
+    let scheduleSuccess = this.dialog.open(DialogSucessRegisterSchedule);
+
+    scheduleSuccess.afterClosed().subscribe(result =>{
+
+      this.router.navigate(['/agendamento/listar']);
+        
+    })
   }
 
 }

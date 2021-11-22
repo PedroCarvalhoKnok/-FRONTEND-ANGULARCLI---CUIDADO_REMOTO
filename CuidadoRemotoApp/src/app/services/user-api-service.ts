@@ -77,7 +77,7 @@ export class UserApiService {
             'Authorization': `Bearer ${token}`
         })
 
-        this.http.put<User>(this.baseUrl, {"client": user.name, "password": user.password, "role": user.role, "phone": user.phone, "birth": user.birthDate, "email": user.email, "_id": user._id},{headers: headers}).toPromise().then(function(resp){
+        this.http.put<User>(this.baseUrl, {"username": user.name, "password": user.password, "role": user.role, "phone": user.phone, "birth": user.birthDate, "email": user.email, "_id": user._id},{headers: headers}).toPromise().then(function(resp){
             return resp;
         }, function(err) {
             return err;
@@ -94,7 +94,7 @@ export class UserApiService {
 
         console.log(this.baseUrl);
 
-        return this.http.post<User>(this.baseUrl + '/authenticate',{"client": user.email, "password": user.password},{headers: headers}).toPromise();
+        return this.http.post<User>(this.baseUrl + '/authenticate',{"username": user.email, "password": user.password},{headers: headers}).toPromise();
             
     }
 

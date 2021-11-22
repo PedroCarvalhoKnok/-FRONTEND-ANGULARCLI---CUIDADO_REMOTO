@@ -24,7 +24,7 @@
   </div>
   <div>
     <label mat-label>Horário</label><br/>
-    <input id="horario" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput value="{{data.agendamento}}">
+    <input type="datetime-local" id="horario" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput value="{{data.agendamento}}">
   </div>
   <button mat-button (click)="EditSchedule(data)" style="border: none; padding: 15px 32px; text-align: center; font-size: 16px; display: inline-block; background-color: #673ab7;">Editar</button>
 </div>

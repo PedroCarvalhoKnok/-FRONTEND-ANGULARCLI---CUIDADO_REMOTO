@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../services/store.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { StoreService } from '../services/store.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private storeService: StoreService) { }
+  constructor(private storeService: StoreService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -22,9 +23,37 @@ export class HomeComponent implements OnInit {
     } else {
       localStorage.removeItem('foo') 
     }
-
-
     
+  }
+
+  goSchedule(){
+
+    this.router.navigate(['/agendamento']);
+
+  }
+
+  goGames(){
+
+    this.router.navigate(['/jogos']);
+
+  }
+
+  goServices(){
+
+    this.router.navigate(['/servicos']);
+
+  }
+
+  goBeats(){
+
+    this.router.navigate(['/batimentos']);
+
+  }
+
+  goScheduleList(){
+
+    this.router.navigate(['/agendamento/listar']);
+
   }
 
 }

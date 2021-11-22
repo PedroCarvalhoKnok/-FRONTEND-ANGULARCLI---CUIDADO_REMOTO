@@ -12,7 +12,7 @@
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button routerLink="/agendamento/listar">Visitar</button>
+        <button (click)="goScheduleList()" mat-button>Visitar</button>
         <button mat-button>Avaliar</button>
       </mat-card-actions>
     </mat-card>
@@ -29,7 +29,7 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button routerLink="/agendamento">Visitar</button>
+          <button (click)="goSchedule()" mat-button>Visitar</button>
           <button mat-button>Avaliar</button>
         </mat-card-actions>
       </mat-card>
@@ -46,7 +46,7 @@
             </p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button routerLink="/batimentos">Visitar</button>
+            <button (click)="goBeats()" mat-button>Visitar</button>
             <button mat-button>Avaliar</button>
           </mat-card-actions>
         </mat-card>
@@ -63,7 +63,7 @@
             </p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button routerLink="/jogos">Visitar</button>
+            <button (click)="goGames()" mat-button>Visitar</button>
             <button mat-button>Avaliar</button>
           </mat-card-actions>
         </mat-card>
@@ -80,7 +80,7 @@
               </p>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button routerLink="/servicos">Visitar</button>
+              <button (click)="goServices()" mat-button>Visitar</button>
               <button mat-button>Avaliar</button>
             </mat-card-actions>
           </mat-card>

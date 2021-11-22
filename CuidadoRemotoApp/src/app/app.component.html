@@ -6,7 +6,7 @@
   <a class="positronx">Cuidado Remoto</a>
   </div>
   <span class="nav-tool-items">
-    <button mat-button *ngIf="storeService.profileVisible" mat-raised-button routerLink="login" routerLinkActive="active">LogOut</button>
+    <button mat-button *ngIf="storeService.profileVisible" mat-raised-button routerLink="login" routerLinkActive="active">Sair</button>
   </span>
 </mat-toolbar>
 <mat-sidenav-container class="example-container">
@@ -20,7 +20,7 @@
     <button (click)="editProfile()" mat-button routerLink="home" class="menu-button">
       Editar Perfil
     </button>
-    <button mat-button routerLink="/inicio" class="menu-button">
+    <button (click)="goHome()" mat-button class="menu-button">
       Início
     </button>
     </div>

@@ -15,6 +15,7 @@ export class HeartMonitorComponent implements OnInit {
   averageBeats: number = 0;
   maxBeats: number = 0;
   minBeats: number = 0;
+  Atual: string = 'Atual';
 
   //intervalId = setInterval(this.generateBeats(), 10000);
 
