@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Edição de Agendamento</h1>
+<div mat-dialog-content style="text-align: center;">
+  <h4>Dados do usuario</h4>
+  <div>
+    <label mat-label for="days">Usuário</label><br/>
+    <input id="usuario" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput value="{{data.userName}}">
+  </div>
+  <div>
+    <label mat-label>Email</label><br/>
+    <input id="email" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput value="{{data.email}}">
+  </div>
+  <div>
+    <label mat-label>Telefone</label><br/>
+    <textarea id="telefone" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput value="{{data.phone}}">
+    </textarea>
+  </div>
+  <div>
+    <label mat-label>Perfil</label><br/>
+    <select id="perfil" name="perfil" style="text-align: center;" value="{{data.role}}">
+      <option value="Administrador">Administrador</option>
+      <option value="Funcionario">Funcionário</option>
+      <option value="Empresa">Empresa</option>
+    </select>
+  </div>
+  <button mat-button (click)="EditUser(data)" style="border: none; padding: 15px 32px; text-align: center; font-size: 16px; display: inline-block; background-color: #673ab7;">Editar usuário</button>
+</div>

@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Edição de Vagas</h1>
+<div mat-dialog-content style="text-align: center;">
+  <h4>Dados da vaga</h4>
+  <div>
+    <label mat-label for="days">Nome da Vaga</label><br/>
+    <input id="vacancy-name" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput value="{{data.vacancyName}}">
+  </div>
+  <div>
+    <label mat-label>Nome da Empresa</label><br/>
+    <input id="company-name" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput value="{{data.companyName}}">
+  </div>
+  <div>
+    <label mat-label>Descricao</label><br/>
+    <textarea id="description" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput value="{{data.description}}">
+    </textarea>
+  </div>
+  <div>
+    <label mat-label>Requisitos</label><br/>
+    <textarea id="require" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput value="{{data.require}}">
+    </textarea>
+  </div>
+  <div>
+    <label mat-label>Beneficios</label><br/>
+    <textarea id="benefits" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput value="{{data.require}}">
+    </textarea>
+  </div>
+  <button mat-button (click)="EditVacancy(data)" style="border: none; padding: 15px 32px; text-align: center; font-size: 16px; display: inline-block; background-color: #673ab7;">Editar vaga</button>
+</div>

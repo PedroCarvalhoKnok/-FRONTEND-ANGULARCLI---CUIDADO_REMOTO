@@ -1,0 +1,43 @@
+<mat-toolbar color="primary" class="app-header">
+  <div>
+    <button *ngIf="storeService.profileVisible" (click)="clickhandler()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  <a class="positronx">Plataforma de empregos</a>
+  </div>
+</mat-toolbar>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+    <div class="side-content">
+    <a mat-icon-button class="menu-button">
+      <mat-icon class="avatar">account_circle</mat-icon>
+    </a>
+    <p class="name">Bem Vindo(a)</p>
+    <button (click)="goUserRegister()" mat-button class="menu-button">
+      Cadastrar Usuário
+    </button>
+    <button (click)="goUserList()" mat-button class="menu-button">
+      Listagem de Usuários
+    </button>
+    <button (click)="goVacancyRegister()" mat-button class="menu-button">
+      Cadastrar Vagas
+    </button>
+    <button (click)="goVacancyList()" mat-button class="menu-button">
+      Listagem de Vagas
+    </button>
+    <button (click)="goCourseRegister()" mat-button class="menu-button">
+      Cadastrar Cursos
+    </button>
+    <button (click)="goCourseList()" mat-button class="menu-button">
+      Listagem de Cursos
+    </button>
+    </div>
+    <mat-divider></mat-divider>
+  </mat-sidenav>
+  <mat-sidenav-content><router-outlet></router-outlet></mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+
+

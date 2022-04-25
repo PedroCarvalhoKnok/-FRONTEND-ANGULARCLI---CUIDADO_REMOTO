@@ -1,0 +1,43 @@
+
+<div class="main-wrapper grid-top" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title >Cadastrar curso</mat-card-title>
+      </mat-card-header>
+  
+      <!-- <form class="example-form" *ngIf="!editForm" (ngSubmit)="registerUser()" [formGroup]="formGroup">
+      <form class="example-form" *ngIf="editForm" (ngSubmit)="editUser()" [formGroup]="formGroup"> -->
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <mat-label>Nome do Curso</mat-label>
+            <input matInput id="course-input" name="course-input" placeholder="Nome do Curso" [(ngModel)]="course.courseName">
+            <div class="invalid-feedback" *ngIf="courseNameValid">
+              Campo curso é necessario
+            </div>
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <mat-label>Descrição</mat-label>
+            <input matInput id="description-input" name="description-input" placeholder="Descrição da vaga" [(ngModel)]="course.description">
+            <div class="invalid-feedback" *ngIf="descriptionValid">
+              Campo descrição é necessario
+            </div>
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <mat-label>Empresa Fornecedora</mat-label>
+            <input matInput type="text" id="company-input" name="company-input" placeholder="Empresa Oferecedora" [(ngModel)]="course.companyOffer">
+            <div class="invalid-feedback" *ngIf="companyOfferValid">
+              Campo empresa fornecedora é necessario
+            </div>
+          </mat-form-field>
+  
+        </mat-card-content>
+  
+        <button id="registerBtn" (click)="registerCourse()" mat-stroked-button class="btn-block">Cadastrar curso</button>
+      <!-- </form>
+      </form> -->
+    </mat-card>
+  </div>
+  
+  

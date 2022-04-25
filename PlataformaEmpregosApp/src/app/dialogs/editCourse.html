@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Edição de Curso</h1>
+<div mat-dialog-content style="text-align: center;">
+  <h4>Dados da curso</h4>
+  <div>
+    <label mat-label for="days">Nome do curso</label><br/>
+    <input id="course-name" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput value="{{data.courseName}}">
+  </div>
+  <div>
+    <label mat-label>Descrição</label><br/>
+    <input id="description" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput value="{{data.description}}">
+  </div>
+  <div>
+    <label mat-label>Empresa Fornecedora</label><br/>
+    <textarea id="companyOffer" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput value="{{data.companyOffer}}">
+    </textarea>
+  </div>
+  <button mat-button (click)="EditCourse(data)" style="border: none; padding: 15px 32px; text-align: center; font-size: 16px; display: inline-block; background-color: #673ab7;">Editar curso</button>
+</div>
