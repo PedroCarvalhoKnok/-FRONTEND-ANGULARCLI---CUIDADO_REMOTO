@@ -16,11 +16,11 @@ export class UserApiService {
 
     get(){
 
-        const headers = new HttpHeaders({
-            'Content-Type': 'application/json'
-        })
-
-        return this.http.get<User[]>(this.baseUrl).toPromise()
+        return this.http.get<User[]>(this.baseUrl + '/ListarUsuarios').toPromise().then(function(resp){
+            return resp;
+        }, function(err) {
+            return err;
+        });
             
     }
 
@@ -44,7 +44,7 @@ export class UserApiService {
             'Content-Type': 'application/json'
         })
 
-        this.http.post<User>(this.baseUrl, {"userName": user.userName, "name": user.name, "role": user.role, "phone": user.phone, "email": user.email, "password": user.password},{headers: headers}).toPromise().then(function(resp){
+        this.http.post<User>(this.baseUrl + '/CadastrarUsuario', {"Usuario": user.userName, "Nome": user.name, "Perfil": user.role, "Telefone": user.phone, "Email": user.email, "Senha": user.password}).toPromise().then(function(resp){
             return resp;
         }, function(err) {
             return err;
@@ -58,7 +58,7 @@ export class UserApiService {
             'Content-Type': 'application/json'
         })
             
-        return this.http.delete<void>(this.baseUrl + '/' + id,{headers: headers}).toPromise().then(function(resp){
+        return this.http.delete<void>(this.baseUrl + '/ExcluirUsuario/' + id).toPromise().then(function(resp){
             return resp;
         }, function(err) {
             return err;
@@ -71,7 +71,7 @@ export class UserApiService {
             'Content-Type': 'application/json'
         })
 
-        this.http.put<User>(this.baseUrl, {"userName": user.userName, "name": user.name, "role": user.role, "phone": user.phone, "email": user.email, "password": user.password, "userId": user._id},{headers: headers}).toPromise().then(function(resp){
+        this.http.put<User>(this.baseUrl + '/AlterarUsuario', {"Usuario": user.userName, "Nome": user.name, "Perfil": user.role, "Telefone": user.phone, "Email": user.email, "Senha": user.password}).toPromise().then(function(resp){
             return resp;
         }, function(err) {
             return err;

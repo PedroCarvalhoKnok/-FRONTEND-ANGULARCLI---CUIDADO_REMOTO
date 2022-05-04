@@ -18,8 +18,9 @@ export class CourseListComponent implements OnInit {
 
   async ngOnInit() {
 
-    let listVacancy = await this.courseApiService.get();
-    this.dataSource = listVacancy;
+    let listCourses: any = await this.courseApiService.get();
+    listCourses = JSON.parse(listCourses)
+    this.dataSource = listCourses;
 
   }
 
@@ -29,10 +30,10 @@ export class CourseListComponent implements OnInit {
 
     this.matDialogue.open(DialogEditCourse, {
       data: {
-        'courseName': courseEdit.courseName,
-        'description': courseEdit.description,
-        'companyOffer': courseEdit.companyOffer,
-        '_id': courseEdit._id
+        'courseName': courseEdit.Nome,
+        'description': courseEdit.Descricao,
+        'companyOffer': courseEdit.EmpresaFornecedora,
+        '_id': courseEdit.CodigoCurso
       },
     });
 
@@ -44,7 +45,7 @@ export class CourseListComponent implements OnInit {
 
     this.matDialogue.open(DialogRemoveVacancy, {
       data: {
-        '_id': course._id
+        '_id': course.CodigoCurso
       },
     });
 

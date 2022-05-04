@@ -64,6 +64,8 @@ export class UserRegisterComponent implements OnInit {
     if (!this.setForm())
       return;
 
+    console.log(this.user);
+
     try {
 
       await this.userApiService.post(this.user);

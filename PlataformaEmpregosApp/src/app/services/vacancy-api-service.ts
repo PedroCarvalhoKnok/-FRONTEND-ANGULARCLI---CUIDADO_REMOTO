@@ -22,7 +22,7 @@ export class VacancyApiService {
             'Content-Type': 'application/json'
         })
 
-        return this.http.get<User[]>(this.baseUrl).toPromise()
+        return this.http.get<User[]>(this.baseUrl + '/ListarVagas').toPromise()
             
     }
 
@@ -46,7 +46,7 @@ export class VacancyApiService {
             'Content-Type': 'application/json'
         })
 
-        this.http.post<User>(this.baseUrl, {"vacancyName": vacancy.vacancyName, "companyName": vacancy.companyName, "description": vacancy.description, "require": vacancy.require, "benefits": vacancy.benefits},{headers: headers}).toPromise().then(function(resp){
+        this.http.post<User>(this.baseUrl + '/CadastrarVaga', {"nome": vacancy.vacancyName, "empresa": vacancy.companyName, "descricao": vacancy.description, "requisitos": vacancy.require, "beneficios": vacancy.benefits, "codigoVaga": vacancy._id}).toPromise().then(function(resp){
             return resp;
         }, function(err) {
             return err;
@@ -60,7 +60,7 @@ export class VacancyApiService {
             'Content-Type': 'application/json'
         })
             
-        return this.http.delete<void>(this.baseUrl + '/' + id,{headers: headers}).toPromise().then(function(resp){
+        return this.http.delete<void>(this.baseUrl + '/ExcluirVaga/' + id).toPromise().then(function(resp){
             return resp;
         }, function(err) {
             return err;
@@ -73,7 +73,7 @@ export class VacancyApiService {
             'Content-Type': 'application/json'
         })
 
-        this.http.put<User>(this.baseUrl, {"vacancyName": vacancy.vacancyName, "companyName": vacancy.companyName, "description": vacancy.description, "require": vacancy.require, "benefits": vacancy.benefits, "vacancyId": vacancy._id},{headers: headers}).toPromise().then(function(resp){
+        this.http.put<User>(this.baseUrl + '/AlterarVaga', {"nome": vacancy.vacancyName, "empresa": vacancy.companyName, "descricao": vacancy.description, "requisitos": vacancy.require, "beneficios": vacancy.benefits, "codigoVaga": vacancy._id}).toPromise().then(function(resp){
             return resp;
         }, function(err) {
             return err;

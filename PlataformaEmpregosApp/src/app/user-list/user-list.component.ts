@@ -19,14 +19,15 @@ export class UserListComponent implements OnInit {
 
   dataSource: any[] = [];
 
-  displayedColumns: string[] = ['Usuario', 'Role', 'Email', 'Telefone', 'Acoes'];
+  displayedColumns: string[] = ['usuario', 'perfil', 'email', 'telefone', 'acoes'];
 
   constructor(private userApiService: UserApiService, private matDialogue: MatDialog) { }
 
   async ngOnInit() {
       
     let listUser = await this.userApiService.get();
-    this.dataSource = listUser;
+    this.dataSource = JSON.parse(listUser);
+    console.log(this.dataSource);
   }
 
   openDelete(user: any) {
@@ -35,7 +36,7 @@ export class UserListComponent implements OnInit {
 
     this.matDialogue.open(DialogRemoveSchedule, {
       data: {
-        '_id': user._id
+        '_id': user.CodigoUsuario
       },
     });
 
@@ -49,11 +50,11 @@ export class UserListComponent implements OnInit {
 
     this.matDialogue.open(DialogEditSchedule, {
       data: {
-        'userName': userEdit.userName,
-        'perfil': userEdit.role,
-        'email': userEdit.email,
-        'telefone': userEdit.telefone,
-        '_id': userEdit._id
+        'userName': userEdit.Usuario,
+        'perfil': userEdit.Perfil,
+        'email': userEdit.Email,
+        'telefone': userEdit.Telefone,
+        '_id': userEdit.CodigoUsuario
       },
     });
 
@@ -122,6 +123,8 @@ export class DialogEditSchedule {
     user.email = (<HTMLInputElement>document.getElementById(`email`)).value;
     user.phone = (<HTMLInputElement>document.getElementById(`telefone`)).value;
     user.role = (<HTMLInputElement>document.getElementById(`perfil`)).value;
+
+    console.log(user);
 
     if (!this.Validator(user)) {
       return;

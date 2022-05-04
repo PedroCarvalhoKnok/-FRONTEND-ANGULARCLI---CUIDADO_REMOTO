@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { CourseRegisterComponent } from './course-register/course-register.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { HomeComponent } from './home/home.component';
 import { CourseListComponent } from './course-list/course-list.component';
 import { VacancyListComponent } from './vacancy-list/vacancy-list.component';
 import { UrbanServicesComponent } from './vacancies-register/vacancies-register.component';
@@ -31,12 +29,12 @@ const routes: Routes = [
     component: CourseListComponent
   },
   {
-    path: 'vagas/listar',
-    component: VacancyListComponent
+    path: 'vagas/registrar',
+    component: UrbanServicesComponent
   },
   {
-    path: 'servicos',
-    component: UrbanServicesComponent
+    path: 'vagas/listar',
+    component: VacancyListComponent
   }
 ];
 

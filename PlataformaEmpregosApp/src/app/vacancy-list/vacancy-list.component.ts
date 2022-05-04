@@ -18,7 +18,8 @@ export class VacancyListComponent implements OnInit {
 
   async ngOnInit() {
    
-    let listVacancy = await this.vacancyApiService.get();
+    let listVacancy: any = await this.vacancyApiService.get();
+    listVacancy = JSON.parse(listVacancy)
     this.dataSource = listVacancy;
   }
 
@@ -28,12 +29,12 @@ export class VacancyListComponent implements OnInit {
 
     this.matDialogue.open(DialogEditVacancy, {
       data: {
-        'vacancyName': vacancyEdit.vacancyName,
-        'companyName': vacancyEdit.companyName,
-        'description': vacancyEdit.description,
-        'require': vacancyEdit.require,
-        'benefits': vacancyEdit.benefits,
-        '_id': vacancyEdit._id
+        'vacancyName': vacancyEdit.Nome,
+        'companyName': vacancyEdit.Empresa,
+        'description': vacancyEdit.Descricao,
+        'require': vacancyEdit.Requisitos,
+        'benefits': vacancyEdit.Beneficios,
+        '_id': vacancyEdit.CodigoVaga
       },
     });
 
@@ -45,7 +46,7 @@ export class VacancyListComponent implements OnInit {
 
     this.matDialogue.open(DialogRemoveVacancy, {
       data: {
-        '_id': vacancy._id
+        '_id': vacancy.CodigoVaga
       },
     });
 

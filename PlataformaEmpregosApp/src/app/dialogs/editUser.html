@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Edição de Agendamento</h1>
+<h1 mat-dialog-title>Editar {{data.userName}}</h1>
 <div mat-dialog-content style="text-align: center;">
   <h4>Dados do usuario</h4>
   <div>
@@ -11,12 +11,13 @@
   </div>
   <div>
     <label mat-label>Telefone</label><br/>
-    <textarea id="telefone" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput value="{{data.phone}}">
+    <textarea id="telefone" style="border: 0; border-width: 0; box-shadow: none; text-align: center;" matInput value="{{data.telefone}}">
     </textarea>
   </div>
   <div>
     <label mat-label>Perfil</label><br/>
-    <select id="perfil" name="perfil" style="text-align: center;" value="{{data.role}}">
+    <select id="perfil" name="perfil" style="text-align: center;">
+      <option selected>{{data.perfil}}</option>
       <option value="Administrador">Administrador</option>
       <option value="Funcionario">Funcionário</option>
       <option value="Empresa">Empresa</option>

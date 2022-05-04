@@ -8,7 +8,7 @@ import { Course } from "../models/Course";
 export class CourseApiService {
     
 
-     baseUrl: string = `${(<any>data).urlBaseApi}/api/cursos`;
+     baseUrl: string = `${(<any>data).urlBaseApi}/api/curso`;
 
     // baseUserUrl: string = `http://localhost:9091/api/users`;
 
@@ -22,7 +22,7 @@ export class CourseApiService {
             'Content-Type': 'application/json'
         })
 
-        return this.http.get<User[]>(this.baseUrl).toPromise()
+        return this.http.get<User[]>(this.baseUrl + '/ListarCursos').toPromise()
             
     }
 
@@ -46,7 +46,7 @@ export class CourseApiService {
             'Content-Type': 'application/json'
         })
 
-        this.http.post<User>(this.baseUrl, {"courseName": course.courseName, "description": course.description, "companyOffer": course.companyOffer},{headers: headers}).toPromise().then(function(resp){
+        this.http.post<Course>(this.baseUrl + '/CadastrarCurso', {"Nome": course.courseName, "Descricao": course.description, "EmpresaFornecedora": course.companyOffer}).toPromise().then(function(resp){
             return resp;
         }, function(err) {
             return err;
@@ -60,7 +60,7 @@ export class CourseApiService {
             'Content-Type': 'application/json'
         })
             
-        return this.http.delete<void>(this.baseUrl + '/' + id,{headers: headers}).toPromise().then(function(resp){
+        return this.http.delete<void>(this.baseUrl + '/ExcluirCurso/' + id).toPromise().then(function(resp){
             return resp;
         }, function(err) {
             return err;
@@ -73,7 +73,7 @@ export class CourseApiService {
             'Content-Type': 'application/json'
         })
 
-        this.http.put<User>(this.baseUrl, {"courseName": course.courseName, "description": course.description, "companyOffer": course.companyOffer, "courseId": course._id},{headers: headers}).toPromise().then(function(resp){
+        this.http.put<User>(this.baseUrl + '/AlterarCurso', {"Nome": course.courseName, "Descricao": course.description, "EmpresaFornecedora": course.companyOffer, "CodigoCurso": course._id}).toPromise().then(function(resp){
             return resp;
         }, function(err) {
             return err;
