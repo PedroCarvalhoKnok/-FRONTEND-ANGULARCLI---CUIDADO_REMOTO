@@ -61,7 +61,6 @@ export class CourseRegisterComponent implements OnInit {
       this.dialog.open(DialogErrorRegisterCourse);
       return;
     }
-
   }
 
   setForm(): boolean {

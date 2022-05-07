@@ -42,7 +42,6 @@ export class UserRegisterComponent implements OnInit {
         document.getElementById('registerBtn')?.click();
       }
     }, false);
-
   }
 
   openDialog() {
@@ -51,7 +50,6 @@ export class UserRegisterComponent implements OnInit {
     sucessDialog.afterClosed().subscribe(result => {
 
       this.router.navigate(['/usuario/listar']);
-
     });
   }
 

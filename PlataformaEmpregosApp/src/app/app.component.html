@@ -1,23 +1,21 @@
 <mat-toolbar color="primary" class="app-header">
   <div class="grid-item1">
-
     <button  *ngIf="storeService.profileVisible" (click)="clickhandler()">
       <mat-icon>menu</mat-icon>
     </button>
   </div>
   <div class="grid-item2">
     <span class="positronx">Plataforma de empregos</span>
-
   </div>
 </mat-toolbar>
 <mat-sidenav-container class="example-container">
   <mat-sidenav #sidenav mode="side" [(opened)]="opened">
     <div class="side-content">
-    <p class="name">Ações</p>
-    <button (click)="goUserRegister()" mat-button class="menu-button">
-      Cadastrar Usuários
-    </button>
-    <button (click)="goUserList()" mat-button class="menu-button">
+      <p class="name">Ações</p>
+      <button (click)="goUserRegister()" mat-button class="menu-button">
+        Cadastrar Usuários
+      </button>
+      <button (click)="goUserList()" mat-button class="menu-button">
       Listagem de Usuários
     </button>
     <button (click)="goVacancyRegister()" mat-button class="menu-button">
