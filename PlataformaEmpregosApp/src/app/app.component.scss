@@ -12,7 +12,12 @@ body {
 }
 
 .app-header {
-	justify-content: space-between;
+	display: grid;
+	gap: 50px 550px;
+	grid-template-columns: auto auto auto;
+
+	padding: 10px;
+	justify-content:center;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -20,12 +25,25 @@ body {
 	z-index: 2;
 	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
 }
+.grid-item {
+	background-color: rgba(255, 255, 255, 0.8);
+	border: 1px solid rgba(0, 0, 0, 0.8);
+	padding: 20px;
+	font-size: 30px;
+	text-align: center;
+  }
 
 .main-wrapper {
 	height: 100%;
 }
 
+.app-menu{
+	display: block;
+	justify-content: end;
+}
+
 .positronx {
+
 	text-decoration: none;
 	color: #ffffff;
 	margin-left: 20px;
@@ -113,6 +131,7 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
+	text-align: center;
     justify-content: flex-start;
     font-size: 1rem;
 
@@ -120,6 +139,8 @@ body {
         margin-right: 8px;
     }
 }
+
+
 
 mat-divider {
     margin-top: 16px;
@@ -146,6 +167,7 @@ mat-divider {
     margin-top: 8px;
     font-weight: normal;
 	margin-left: 15px;
+	text-align: center;
 }
 
 .mat-sidenav{
